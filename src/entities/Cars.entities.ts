@@ -4,13 +4,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   OneToMany,
-  BeforeInsert,
   ManyToOne,
 } from "typeorm";
-import bcrypt from "bcryptjs";
 import Users from "./Users.entities";
-import Brands from "./Brands.entities";
-import CarModel from "./CarModels.entities";
 import Photos from "./Photos.entities";
 import Comments from "./Comments.entities";
 
@@ -31,8 +27,8 @@ export class Cars {
   @Column({ length: 150 })
   color: string;
 
-  @Column({ length: 150 })
-  fipePrice: string;
+  @Column({ default: false })
+  isPromo: boolean;
 
   @Column({ length: 150 })
   price: string;
@@ -52,13 +48,13 @@ export class Cars {
   @ManyToOne(() => Users, (user) => user.cars)
   user: Users;
 
-  @ManyToOne(() => Brands, (brand) => brand.cars)
-  brand: Brands;
+  @Column({ length: 150, nullable: false })
+  brand: string;
 
-  @ManyToOne(() => CarModel, (model) => model.cars)
-  model: CarModel;
+  @Column({ length: 150, nullable: false })
+  model: string;
 
-  @OneToMany(() => Photos, (photo) => photo)
+  @OneToMany(() => Photos, (photo) => photo.car)
   photos: Photos[];
 
   @OneToMany(() => Comments, (comment) => comment.Car)

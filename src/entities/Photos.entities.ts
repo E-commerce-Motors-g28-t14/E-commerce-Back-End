@@ -9,11 +9,11 @@ export class Photos {
   @Column()
   imageLink: string;
 
-  @Column({ default: true })
+  @Column({ default: false })
   isCover: boolean;
 
-  @ManyToOne(() => Cars, (car) => car.id)
-  carId: Cars;
+  @ManyToOne(() => Cars, (car) => car.photos)
+  car: Cars;
 }
 
 export default Photos;

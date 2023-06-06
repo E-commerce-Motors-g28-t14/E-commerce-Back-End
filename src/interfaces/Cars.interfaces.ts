@@ -1,20 +1,19 @@
 import { date } from "yup";
 import Users from "../entities/Users.entities";
-import Brands from "../entities/Brands.entities";
-import CarModel from "../entities/CarModels.entities";
+import { IphotosRequest, IphotosResponse } from "./Photos.interfaces";
 
 export interface ICarRequest {
   year: number;
   fuel: string;
   km: number;
   color: string;
-  fipePrice: string;
+  isPromo: boolean;
   price: string;
   description: string;
   isActive: boolean;
-  userId: string;
-  brandId: string;
-  modelId: string;
+  brand: string;
+  model: string;
+  photos: IphotosRequest[];
 }
 
 export interface ICarResponse {
@@ -23,13 +22,13 @@ export interface ICarResponse {
   fuel: string;
   km: number;
   color: string;
-  fipePrice: string;
+  isPromo: boolean;
   price: string;
   description: string;
   isActive: boolean;
+  brand: string;
+  model: string;
+  photos: IphotosResponse[];
   createdAt: Date;
   updatedAt: Date;
-  userId: string;
-  brandId: string;
-  modelId: string;
 }

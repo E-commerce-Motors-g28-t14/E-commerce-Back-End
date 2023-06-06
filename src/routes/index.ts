@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { CarController } from "../controllers/Car.Controller";
+import {
+  CarController,
+  GetCarsController,
+} from "../controllers/Car.Controller";
 
 const carRouter = Router();
 
 carRouter.post("/cars", CarController);
+carRouter.get("/cars", GetCarsController);
 
 export default carRouter;

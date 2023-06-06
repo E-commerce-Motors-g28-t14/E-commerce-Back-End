@@ -35,6 +35,9 @@ export class Users {
   @Column({ length: 150, nullable: true })
   description: string;
 
+  @Column({ default: true })
+  isSeller: boolean;
+
   @OneToOne(() => Adress, (adress) => adress.user)
   adress: Adress;
 
