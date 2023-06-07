@@ -9,8 +9,8 @@ import {
   BeforeUpdate,
   BeforeInsert,
 } from "typeorm";
-import { Adress } from "./Adress.entities";
-import { Car } from "./Cars.entities";
+import Address from "./Address.entities";
+import Car from "./Cars.entities";
 import { getRounds, hashSync } from "bcryptjs";
 
 @Entity("users")
@@ -42,8 +42,8 @@ export class User {
   @Column({ default: true })
   isSeller: boolean;
 
-  @OneToOne(() => Adress, (adress) => adress.user)
-  adress: Adress;
+  @OneToOne(() => Address, (address) => address.user)
+  address: Address;
 
   @OneToMany(() => Car, (car) => car.user)
   cars: Car[];
@@ -57,10 +57,10 @@ export class User {
   @BeforeUpdate()
   @BeforeInsert()
   hashPassword(): void {
-    const rounds: number = getRounds(this.password)
+    const rounds: number = getRounds(this.password);
 
-    if(!rounds){
-      this.password = hashSync(this.password, 10)
+    if (!rounds) {
+      this.password = hashSync(this.password, 10);
     }
   }
 }
