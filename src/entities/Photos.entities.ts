@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { Car } from "./Cars.entities";
+import Car from "./Cars.entities";
 
 @Entity("photos")
-export class Photo {
+class Photo {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 

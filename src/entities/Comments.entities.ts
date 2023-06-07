@@ -7,10 +7,10 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-import { Car } from "./Cars.entities";
+import Car from "./Cars.entities";
 
 @Entity("comments")
-export class Comment {
+class Comment {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
