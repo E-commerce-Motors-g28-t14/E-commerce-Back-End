@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   CreateCarService,
   GetCarsService,
+  RemoveCarService,
   UpdateCarService,
 } from "../services";
 import { ICarRequest, ICarResponse, ICarUpdate } from "../interfaces";
@@ -34,4 +35,20 @@ const UpdateCarController = async (
   return res.status(200).json(car);
 };
 
-export { CreateCarController, GetCarsController, UpdateCarController };
+const RemoveCarController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const carId: string = req.params.id;
+
+  await RemoveCarService(carId);
+
+  return res.status(204).send();
+};
+
+export {
+  CreateCarController,
+  GetCarsController,
+  UpdateCarController,
+  RemoveCarController,
+};
