@@ -1,14 +1,22 @@
 import { Request, Response } from "express";
 import { CreateCarService, GetCarsService } from "../services/Cars.Service";
-import { ICarRequest } from "../interfaces/Cars.interfaces";
+import { ICarRequest, ICarResponse } from "../interfaces";
 
-export const CarController = async (req: Request, res: Response) => {
-  const data = req.body;
-  const car = await CreateCarService(data);
-  res.status(201).json(car);
+const CreateCarController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const data: ICarRequest = req.body;
+  const car: ICarResponse = await CreateCarService(data);
+  return res.status(201).json(car);
 };
 
-export const GetCarsController = async (req: Request, res: Response) => {
-  const data = await GetCarsService();
-  res.status(200).json(data);
+const GetCarsController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const cars: ICarResponse[] = await GetCarsService();
+  return res.status(200).json(cars);
 };
+
+export { CreateCarController, GetCarsController };

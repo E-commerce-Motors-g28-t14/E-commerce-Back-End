@@ -5,12 +5,13 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   OneToOne,
+  UpdateDateColumn,
 } from "typeorm";
-import Adress from "./Adress.entities";
-import Cars from "./Cars.entities";
+import { Adress } from "./Adress.entities";
+import { Car } from "./Cars.entities";
 
-@Entity("Users")
-export class Users {
+@Entity("users")
+export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -41,14 +42,14 @@ export class Users {
   @OneToOne(() => Adress, (adress) => adress.user)
   adress: Adress;
 
-  @OneToMany(() => Cars, (car) => car.user)
-  cars: Cars[];
+  @OneToMany(() => Car, (car) => car.user)
+  cars: Car[];
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
 
-  @CreateDateColumn()
-  updatedAt: Date;
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 }
 
-export default Users;
+export default User;

@@ -1,17 +1,14 @@
 import {
   Column,
-  CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  OneToMany,
   OneToOne,
-  BeforeInsert,
   JoinColumn,
 } from "typeorm";
-import bcrypt from "bcryptjs";
-import Users from "./Users.entities";
 
-@Entity("Adress")
+import { User } from "./Users.entities";
+
+@Entity("adressess")
 export class Adress {
   @PrimaryGeneratedColumn("uuid")
   id: string;
@@ -34,9 +31,9 @@ export class Adress {
   @Column({ length: 150 })
   complement: string;
 
-  @OneToOne(() => Users)
+  @OneToOne(() => User)
   @JoinColumn()
-  user: Users;
+  user: User;
 }
 
 export default Adress;

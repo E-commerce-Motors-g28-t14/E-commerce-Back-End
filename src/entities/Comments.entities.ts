@@ -4,26 +4,27 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   ManyToOne,
+  UpdateDateColumn,
 } from "typeorm";
 
-import Cars from "./Cars.entities";
+import { Car } from "./Cars.entities";
 
-@Entity("Comments")
-export class Comments {
+@Entity("comments")
+export class Comment {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ length: 250 })
   comment: string;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
 
-  @CreateDateColumn()
-  updatedAt: Date;
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 
-  @ManyToOne(() => Cars, (car) => car.comments)
-  Car: Cars;
+  @ManyToOne(() => Car, (Car) => Car.comments)
+  car: Car;
 }
 
-export default Comments;
+export default Comment;
