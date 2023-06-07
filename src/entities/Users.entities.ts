@@ -6,9 +6,12 @@ import {
   OneToMany,
   OneToOne,
   UpdateDateColumn,
+  BeforeUpdate,
+  BeforeInsert,
 } from "typeorm";
 import { Adress } from "./Adress.entities";
 import { Car } from "./Cars.entities";
+import { getRounds, hashSync } from "bcryptjs";
 
 @Entity("users")
 export class User {
@@ -50,6 +53,16 @@ export class User {
 
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
+
+  @BeforeUpdate()
+  @BeforeInsert()
+  hashPassword(): void {
+    const rounds: number = getRounds(this.password)
+
+    if(!rounds){
+      this.password = hashSync(this.password, 10)
+    }
+  }
 }
 
 export default User;
