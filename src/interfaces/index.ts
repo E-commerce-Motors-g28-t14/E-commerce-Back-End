@@ -2,6 +2,7 @@ import {
   ICarRequest,
   ICarResponse,
   ICarWithoutPhotosRequest,
+  ICarUpdate,
 } from "./Cars.interfaces";
 import {
   IPhotoArrayRequest,
@@ -14,6 +15,7 @@ export {
   ICarRequest,
   ICarResponse,
   ICarWithoutPhotosRequest,
+  ICarUpdate,
   IPhotoRequest,
   IPhotoResponse,
   IPhotoArrayRequest,

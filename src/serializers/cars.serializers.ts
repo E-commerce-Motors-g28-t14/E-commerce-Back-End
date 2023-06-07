@@ -39,8 +39,15 @@ const carRequestWithoutPhotosSerializer = carResponseSerializer.omit({
   photos: true,
 });
 
+const carUpdateSerializer = carRequestSerializer
+  .omit({
+    fipePrice: true,
+  })
+  .partial();
+
 export {
   carResponseSerializer,
   carRequestSerializer,
   carRequestWithoutPhotosSerializer,
+  carUpdateSerializer,
 };
