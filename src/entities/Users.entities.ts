@@ -48,19 +48,19 @@ export class User {
   @OneToMany(() => Car, (car) => car.user)
   cars: Car[];
 
-  @CreateDateColumn({ type: "date" })
-  createdAt: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @UpdateDateColumn({ type: "date" })
-  updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @BeforeUpdate()
   @BeforeInsert()
   hashPassword(): void {
-    const rounds: number = getRounds(this.password)
+    const rounds: number = getRounds(this.password);
 
-    if(!rounds){
-      this.password = hashSync(this.password, 10)
+    if (!rounds) {
+      this.password = hashSync(this.password, 10);
     }
   }
 }

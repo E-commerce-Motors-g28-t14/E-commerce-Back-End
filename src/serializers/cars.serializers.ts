@@ -16,8 +16,8 @@ const carResponseSerializer = z.object({
   price: z.string().max(150),
   description: z.string().max(150).nullish(),
   isActive: z.boolean().default(true),
-  createdAt: z.string(),
-  updatedAt: z.string(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
   photos: allPhotosResponseSerializer,
 });
 
@@ -32,7 +32,7 @@ const carRequestSerializer = carResponseSerializer
   })
   .extend({
     fipePrice: z.string(),
-    newPhotos: allPhotosRequestWithoutCarIdSerializer,
+    photos: allPhotosRequestWithoutCarIdSerializer,
   });
 
 const carRequestWithoutPhotosSerializer = carResponseSerializer.omit({
