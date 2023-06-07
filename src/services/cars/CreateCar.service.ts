@@ -1,0 +1,46 @@
+import {
+  ICarRequest,
+  ICarResponse,
+  ICarWithoutPhotosRequest,
+  IPhotoResponse,
+} from "../../interfaces";
+import { carRepository, photoRepository } from "../../repositories";
+import { carResponseSerializer } from "../../serializers";
+
+export const CreateCarService = async (
+  carData: ICarRequest
+): Promise<ICarResponse> => {
+  const { newPhotos, fipePrice, ...payload } = carData;
+
+  const isInPromo: boolean = +fipePrice * 0.95 >= +payload.price;
+
+  const newCar: ICarWithoutPhotosRequest = carRepository.create({
+    ...payload,
+    isActive: true,
+    isPromo: isInPromo,
+  });
+
+  await carRepository.save(newCar);
+
+  const photosData: IPhotoResponse[] = [];
+
+  await Promise.all(
+    newPhotos.map(async (photo) => {
+      const photoData: IPhotoResponse = photoRepository.create({
+        ...photo,
+        car: newCar,
+      });
+
+      photosData.push(photoData);
+
+      await photoRepository.save(photoData);
+    })
+  );
+
+  const carReturn: ICarResponse = carResponseSerializer.parse({
+    ...newCar,
+    photos: photosData,
+  });
+
+  return carReturn;
+};
