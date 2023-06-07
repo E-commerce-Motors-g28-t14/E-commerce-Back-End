@@ -1,3 +1,7 @@
-import { CreateCarController, GetCarsController } from "./Car.Controller";
+import {
+  CreateCarController,
+  GetCarsController,
+  UpdateCarController,
+} from "./Car.Controller";
 
-export { CreateCarController, GetCarsController };
+export { CreateCarController, GetCarsController, UpdateCarController };
