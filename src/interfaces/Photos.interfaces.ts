@@ -1,14 +1,20 @@
-import Cars from "../entities/Cars.entities";
-import { ICarResponse } from "./Cars.interfaces";
+import { z } from "zod";
+import {
+  allPhotosRequestSerializer,
+  allPhotosResponseSerializer,
+  photoRequestSerializer,
+  photoResponseSerializer,
+} from "../serializers";
 
-export interface IphotosRequest {
-  imageLink: string;
-  isCover: boolean;
-}
+type IPhotoRequest = z.infer<typeof photoRequestSerializer>;
+type IPhotoResponse = z.infer<typeof photoResponseSerializer>;
 
-export interface IphotosResponse {
-  id: string;
-  imageLink: string;
-  isCover: boolean;
-  car: ICarResponse;
-}
+type IPhotoArrayRequest = z.infer<typeof allPhotosRequestSerializer>;
+type IPhotoArrayResponse = z.infer<typeof allPhotosResponseSerializer>;
+
+export {
+  IPhotoRequest,
+  IPhotoResponse,
+  IPhotoArrayRequest,
+  IPhotoArrayResponse,
+};

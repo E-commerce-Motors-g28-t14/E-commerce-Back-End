@@ -1,12 +1,3 @@
-import { Router } from "express";
-import {
-  CarController,
-  GetCarsController,
-} from "../controllers/Car.Controller";
+import carRouter from "./cars.routes";
 
-const carRouter = Router();
-
-carRouter.post("/cars", CarController);
-carRouter.get("/cars", GetCarsController);
-
-export default carRouter;
+export { carRouter };

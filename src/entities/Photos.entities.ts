@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import Cars from "./Cars.entities";
+import { Car } from "./Cars.entities";
 
-@Entity("Photos")
-export class Photos {
+@Entity("photos")
+export class Photo {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -12,8 +12,8 @@ export class Photos {
   @Column({ default: false })
   isCover: boolean;
 
-  @ManyToOne(() => Cars, (car) => car.photos)
-  car: Cars;
+  @ManyToOne(() => Car, (Car) => Car.photos)
+  car: Car;
 }
 
-export default Photos;
+export default Photo;

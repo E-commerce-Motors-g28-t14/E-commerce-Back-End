@@ -5,15 +5,22 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   ManyToOne,
+  UpdateDateColumn,
 } from "typeorm";
-import Users from "./Users.entities";
-import Photos from "./Photos.entities";
-import Comments from "./Comments.entities";
+import { User } from "./Users.entities";
+import { Photo } from "./Photos.entities";
+import { Comment } from "./Comments.entities";
 
-@Entity("Cars")
-export class Cars {
+@Entity("cars")
+export class Car {
   @PrimaryGeneratedColumn("uuid")
   id: string;
+
+  @Column({ length: 150 })
+  brand: string;
+
+  @Column({ length: 150 })
+  model: string;
 
   @Column()
   year: number;
@@ -34,31 +41,25 @@ export class Cars {
   price: string;
 
   @Column({ length: 150, nullable: true })
-  description: string;
+  description?: string | null | undefined;
 
   @Column({ default: true })
   isActive: boolean;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
 
-  @CreateDateColumn()
-  updatedAt: Date;
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 
-  @ManyToOne(() => Users, (user) => user.cars)
-  user: Users;
+  @ManyToOne(() => User, (User) => User.cars)
+  user: User;
 
-  @Column({ length: 150, nullable: false })
-  brand: string;
+  @OneToMany(() => Photo, (Photo) => Photo.car)
+  photos: Photo[];
 
-  @Column({ length: 150, nullable: false })
-  model: string;
-
-  @OneToMany(() => Photos, (photo) => photo.car)
-  photos: Photos[];
-
-  @OneToMany(() => Comments, (comment) => comment.Car)
-  comments: Comments[];
+  @OneToMany(() => Comment, (Comment) => Comment.car)
+  comments: Comment[];
 }
 
-export default Cars;
+export default Car;
