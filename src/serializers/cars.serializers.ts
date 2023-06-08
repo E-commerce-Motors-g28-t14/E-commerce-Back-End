@@ -39,8 +39,13 @@ const carRequestWithoutPhotosSerializer = carResponseSerializer.omit({
   photos: true,
 });
 
+const carUpdateSerializer = carRequestSerializer.extend({
+  isActive: z.boolean(),
+});
+
 export {
   carResponseSerializer,
   carRequestSerializer,
   carRequestWithoutPhotosSerializer,
+  carUpdateSerializer,
 };

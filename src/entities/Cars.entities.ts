@@ -8,11 +8,11 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { User } from "./Users.entities";
-import { Photo } from "./Photos.entities";
-import { Comment } from "./Comments.entities";
+import Photo from "./Photos.entities";
+import Comment from "./Comments.entities";
 
 @Entity("cars")
-export class Car {
+class Car {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
