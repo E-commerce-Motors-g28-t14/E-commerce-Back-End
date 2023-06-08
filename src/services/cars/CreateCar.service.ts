@@ -10,7 +10,7 @@ import { carResponseSerializer } from "../../serializers";
 export const CreateCarService = async (
   carData: ICarRequest
 ): Promise<ICarResponse> => {
-  const { newPhotos, fipePrice, ...payload } = carData;
+  const { photos, fipePrice, ...payload } = carData;
 
   const isInPromo: boolean = +fipePrice * 0.95 >= +payload.price;
 
@@ -25,7 +25,7 @@ export const CreateCarService = async (
   const photosData: IPhotoResponse[] = [];
 
   await Promise.all(
-    newPhotos.map(async (photo) => {
+    photos.map(async (photo) => {
       const photoData: IPhotoResponse = photoRepository.create({
         ...photo,
         car: newCar,
