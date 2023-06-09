@@ -14,7 +14,7 @@ import Car from "./Cars.entities";
 import { getRounds, hashSync } from "bcryptjs";
 
 @Entity("users")
-export class User {
+class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 

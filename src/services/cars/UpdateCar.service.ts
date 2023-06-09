@@ -7,7 +7,7 @@ export const UpdateCarService = async (
   carData: ICarUpdate,
   carId: string
 ): Promise<ICarResponse> => {
-  const { newPhotos, fipePrice, ...payload } = carData;
+  const { photos, fipePrice, ...payload } = carData;
 
   const isInPromo: boolean = +fipePrice * 0.95 >= +payload.price;
 
@@ -18,7 +18,7 @@ export const UpdateCarService = async (
     isPromo: isInPromo,
   });
 
-  const photos = await photoRepository.find({
+  const oldPhotos = await photoRepository.find({
     where: {
       car: {
         id: carId,
@@ -26,10 +26,10 @@ export const UpdateCarService = async (
     },
   });
 
-  await photoRepository.remove(photos);
+  await photoRepository.remove(oldPhotos);
 
   await Promise.all(
-    newPhotos.map(async (photo) => {
+    photos.map(async (photo) => {
       const photoData: IPhotoResponse = photoRepository.create({
         ...photo,
         car,
