@@ -6,7 +6,7 @@ import {
   JoinColumn,
 } from "typeorm";
 
-import { User } from "./Users.entities";
+import User from "./Users.entities";
 
 @Entity("addresses")
 class Address {
