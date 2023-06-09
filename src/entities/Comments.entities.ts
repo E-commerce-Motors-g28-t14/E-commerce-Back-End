@@ -17,11 +17,11 @@ class Comment {
   @Column({ length: 250 })
   comment: string;
 
-  @CreateDateColumn({ type: "date" })
-  createdAt: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @UpdateDateColumn({ type: "date" })
-  updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @ManyToOne(() => Car, (Car) => Car.comments)
   car: Car;

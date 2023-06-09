@@ -48,11 +48,11 @@ export class User {
   @OneToMany(() => Car, (car) => car.user)
   cars: Car[];
 
-  @CreateDateColumn({ type: "date" })
-  createdAt: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @UpdateDateColumn({ type: "date" })
-  updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @BeforeUpdate()
   @BeforeInsert()

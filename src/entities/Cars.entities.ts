@@ -46,11 +46,11 @@ class Car {
   @Column({ default: true })
   isActive: boolean;
 
-  @CreateDateColumn({ type: "date" })
-  createdAt: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  @UpdateDateColumn({ type: "date" })
-  updatedAt: string;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @ManyToOne(() => User, (User) => User.cars)
   user: User;
