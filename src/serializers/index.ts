@@ -2,6 +2,8 @@ import {
   carResponseSerializer,
   carRequestSerializer,
   carRequestWithoutPhotosSerializer,
+  carsInfoResponseSerializer,
+  carUpdateSerializer,
 } from "./cars.serializers";
 import {
   allPhotosResponseSerializer,
@@ -22,4 +24,6 @@ export {
   photoRequestSerializer,
   photoRequestWithoutCarIdSerializer,
   photoResponseSerializer,
+  carsInfoResponseSerializer,
+  carUpdateSerializer,
 };

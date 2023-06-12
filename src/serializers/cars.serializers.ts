@@ -43,9 +43,18 @@ const carUpdateSerializer = carRequestSerializer.extend({
   isActive: z.boolean(),
 });
 
+const carsInfoResponseSerializer = z.object({
+  brands: z.string().array(),
+  models: z.string().array(),
+  years: z.number().array(),
+  fuels: z.string().array(),
+  colors: z.string().array(),
+});
+
 export {
   carResponseSerializer,
   carRequestSerializer,
   carRequestWithoutPhotosSerializer,
   carUpdateSerializer,
+  carsInfoResponseSerializer,
 };

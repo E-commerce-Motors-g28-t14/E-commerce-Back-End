@@ -3,8 +3,9 @@ import {
   carRequestSerializer,
   carRequestWithoutPhotosSerializer,
   carResponseSerializer,
+  carUpdateSerializer,
+  carsInfoResponseSerializer,
 } from "../serializers";
-import { carUpdateSerializer } from "../serializers/cars.serializers";
 
 type ICarRequest = z.infer<typeof carRequestSerializer>;
 type ICarWithoutPhotosRequest = z.infer<
@@ -12,5 +13,12 @@ type ICarWithoutPhotosRequest = z.infer<
 >;
 type ICarResponse = z.infer<typeof carResponseSerializer>;
 type ICarUpdate = z.infer<typeof carUpdateSerializer>;
+type ICarInfoResponse = z.infer<typeof carsInfoResponseSerializer>;
 
-export { ICarRequest, ICarResponse, ICarWithoutPhotosRequest, ICarUpdate };
+export {
+  ICarRequest,
+  ICarResponse,
+  ICarWithoutPhotosRequest,
+  ICarUpdate,
+  ICarInfoResponse,
+};
