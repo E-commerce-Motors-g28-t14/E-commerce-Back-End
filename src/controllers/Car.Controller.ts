@@ -1,11 +1,17 @@
 import { Request, Response } from "express";
 import {
   CreateCarService,
+  GetCarsInfoService,
   GetCarsService,
   RemoveCarService,
   UpdateCarService,
 } from "../services";
-import { ICarRequest, ICarResponse, ICarUpdate } from "../interfaces";
+import {
+  ICarInfoResponse,
+  ICarRequest,
+  ICarResponse,
+  ICarUpdate,
+} from "../interfaces";
 
 const CreateCarController = async (
   req: Request,
@@ -22,6 +28,14 @@ const GetCarsController = async (
 ): Promise<Response> => {
   const cars: ICarResponse[] = await GetCarsService();
   return res.status(200).json(cars);
+};
+
+const GetCarsInfoController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const carsInfo: ICarInfoResponse = await GetCarsInfoService();
+  return res.status(200).json(carsInfo);
 };
 
 const UpdateCarController = async (
@@ -49,6 +63,7 @@ const RemoveCarController = async (
 export {
   CreateCarController,
   GetCarsController,
+  GetCarsInfoController,
   UpdateCarController,
   RemoveCarController,
 };

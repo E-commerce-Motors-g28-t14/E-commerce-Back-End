@@ -1,6 +1,7 @@
 import {
   CreateCarController,
   GetCarsController,
+  GetCarsInfoController,
   UpdateCarController,
   RemoveCarController,
 } from "./Car.Controller";
@@ -8,6 +9,7 @@ import {
 export {
   CreateCarController,
   GetCarsController,
+  GetCarsInfoController,
   UpdateCarController,
   RemoveCarController,
 };
