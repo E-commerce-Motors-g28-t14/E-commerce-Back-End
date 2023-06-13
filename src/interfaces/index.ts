@@ -11,7 +11,7 @@ import {
   IPhotoRequest,
   IPhotoResponse,
 } from "./Photos.interfaces";
-
+import { iLoginUser, iLoginUserReturn } from "./login.interfaces";
 export {
   ICarRequest,
   ICarResponse,
@@ -22,4 +22,6 @@ export {
   IPhotoArrayRequest,
   IPhotoArrayResponse,
   ICarInfoResponse,
+  iLoginUser,
+  iLoginUserReturn
 };

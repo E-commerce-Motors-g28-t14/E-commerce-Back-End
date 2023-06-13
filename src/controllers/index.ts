@@ -6,6 +6,7 @@ import {
   RemoveCarController,
 } from "./Car.Controller";
 import { createUserController } from "./User.controller";
+import { loginUserController } from "./login.controller";
 
 export {
   CreateCarController,
@@ -13,5 +14,6 @@ export {
   GetCarsInfoController,
   UpdateCarController,
   RemoveCarController,
-  createUserController
+  createUserController,
+  loginUserController
 };
