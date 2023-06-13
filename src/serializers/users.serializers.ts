@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createAddressReturnSchema } from "./addresses.serializer";
+import { createAddressReturnSchema } from "./addresses.serializers";
 
 const userCreateSchema = z.object({
     name: z.string().max(150),

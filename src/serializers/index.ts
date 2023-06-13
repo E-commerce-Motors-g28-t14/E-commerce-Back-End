@@ -1,7 +1,7 @@
 import { 
   createAddressReturnSchema, 
   createAddressSchema 
-} from "./addresses.serializer";
+} from "./addresses.serializers";
 import {
   carResponseSerializer,
   carRequestSerializer,
