@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { User } from "../entities";
-import { getUserByCpfService } from "../services/users/getUserByCpf.service";
+import { getUserByCpfService } from "../services";
 
 export const isCpfUniqueMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     const userCpf: string = req.body.cpf

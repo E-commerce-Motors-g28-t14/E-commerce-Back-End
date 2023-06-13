@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { User } from "../entities";
-import { getUserByEmailService } from "../services/users/getUserByEmail.service";
+import { getUserByEmailService } from "../services";
 
 export const isEmailUniqueMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     const userEmail: string = req.body.email

@@ -1,3 +1,7 @@
+import { 
+  createAddressReturnSchema, 
+  createAddressSchema 
+} from "./addresses.serializer";
 import {
   carResponseSerializer,
   carRequestSerializer,
@@ -13,6 +17,10 @@ import {
   photoRequestWithoutCarIdSerializer,
   photoResponseSerializer,
 } from "./photos.serializers";
+import { 
+  userCreateReturnSchema, 
+  userCreateSchema 
+} from "./users.serializers";
 
 export {
   carResponseSerializer,
@@ -26,4 +34,8 @@ export {
   photoResponseSerializer,
   carsInfoResponseSerializer,
   carUpdateSerializer,
+  userCreateSchema,
+  userCreateReturnSchema,
+  createAddressReturnSchema,
+  createAddressSchema
 };
