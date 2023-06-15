@@ -4,20 +4,25 @@ import {
   ICarWithoutPhotosRequest,
   IPhotoResponse,
 } from "../../interfaces";
-import { carRepository, photoRepository } from "../../repositories";
+import { carRepository, photoRepository, userRepository } from "../../repositories";
 import { carResponseSerializer } from "../../serializers";
 
 export const CreateCarService = async (
-  carData: ICarRequest
+  carData: ICarRequest,
+  idUser: string
 ): Promise<ICarResponse> => {
   const { photos, fipePrice, ...payload } = carData;
-
   const isInPromo: boolean = +fipePrice * 0.95 >= +payload.price;
+  
+  const seller = await userRepository.findOne({
+    where:{id:idUser}
+  })
 
   const newCar: ICarWithoutPhotosRequest = carRepository.create({
     ...payload,
     isActive: true,
     isPromo: isInPromo,
+    user: seller
   });
 
   await carRepository.save(newCar);

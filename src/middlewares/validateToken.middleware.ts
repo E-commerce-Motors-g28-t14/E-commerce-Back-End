@@ -24,7 +24,7 @@ export const validateTokenMiddleware = (req: Request, res: Response, next: NextF
             }
             
             res.locals.userToken = {
-                id: Number(decoded.sub),
+                id: decoded.sub,
                 isSeller: decoded.isSeller
             }
         }
