@@ -35,7 +35,7 @@ const GetCarsInfoController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const carsInfo: ICarInfoResponse = await GetCarsInfoService();
+  const carsInfo = await GetCarsInfoService();
   return res.status(200).json(carsInfo);
 };
 

@@ -4,7 +4,11 @@ import {
   ICarWithoutPhotosRequest,
   IPhotoResponse,
 } from "../../interfaces";
-import { carRepository, photoRepository, userRepository } from "../../repositories";
+import {
+  carRepository,
+  photoRepository,
+  userRepository,
+} from "../../repositories";
 import { carResponseSerializer } from "../../serializers";
 
 export const CreateCarService = async (
@@ -13,16 +17,16 @@ export const CreateCarService = async (
 ): Promise<ICarResponse> => {
   const { photos, fipePrice, ...payload } = carData;
   const isInPromo: boolean = +fipePrice * 0.95 >= +payload.price;
-  
+
   const seller = await userRepository.findOne({
-    where:{id:idUser}
-  })
+    where: { id: idUser },
+  });
 
   const newCar: ICarWithoutPhotosRequest = carRepository.create({
     ...payload,
     isActive: true,
     isPromo: isInPromo,
-    user: seller
+    user: seller,
   });
 
   await carRepository.save(newCar);

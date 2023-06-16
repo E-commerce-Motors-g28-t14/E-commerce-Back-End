@@ -9,7 +9,7 @@ const carResponseSerializer = z.object({
   brand: z.string().max(150),
   model: z.string().max(150),
   year: z.number(),
-  fuel: z.string().max(150),
+  fuel: z.number(),
   km: z.number(),
   color: z.string().max(150),
   isPromo: z.boolean().default(false),
