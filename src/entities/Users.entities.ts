@@ -12,6 +12,7 @@ import {
 import Address from "./Address.entities";
 import Car from "./Cars.entities";
 import { getRounds, hashSync } from "bcryptjs";
+import Comment from "./Comments.entities";
 
 @Entity("users")
 class User {
@@ -42,11 +43,17 @@ class User {
   @Column({ default: true })
   isSeller: boolean;
 
+  @Column({ length: 26 })
+  color: string
+
   @OneToOne(() => Address, (address) => address.user)
   address: Address;
 
   @OneToMany(() => Car, (car) => car.user)
   cars: Car[];
+
+  @OneToMany(() => Comment, (comment) => comment.user)
+  comments: Comment[]
 
   @CreateDateColumn()
   createdAt: Date;

@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 
 import Car from "./Cars.entities";
+import User from "./Users.entities";
 
 @Entity("comments")
 class Comment {
@@ -25,6 +26,9 @@ class Comment {
 
   @ManyToOne(() => Car, (Car) => Car.comments)
   car: Car;
+
+  @ManyToOne(() => User, (user) => user.comments)
+  user: User
 }
 
 export default Comment;
