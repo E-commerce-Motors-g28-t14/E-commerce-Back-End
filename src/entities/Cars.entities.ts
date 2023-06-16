@@ -25,8 +25,8 @@ class Car {
   @Column()
   year: number;
 
-  @Column({ length: 150 })
-  fuel: string;
+  @Column()
+  fuel: number;
 
   @Column()
   km: number;
