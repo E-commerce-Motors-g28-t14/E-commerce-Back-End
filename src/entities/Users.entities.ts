@@ -43,8 +43,8 @@ class User {
   @Column({ default: true })
   isSeller: boolean;
 
-  @Column({ length: 26 })
-  color: string
+  @Column()
+  color: number
 
   @OneToOne(() => Address, (address) => address.user)
   address: Address;

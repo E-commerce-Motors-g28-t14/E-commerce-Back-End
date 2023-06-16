@@ -6,6 +6,7 @@ const userCreateSchema = z.object({
     password: z.string().max(150),
     email: z.string().max(150),
     cpf: z.string().max(150),
+    color: z.number().nonnegative().max(12),
     birthdate: z.string(),
     phone: z.string().max(11),
     description: z.string().max(150).nullish(),
