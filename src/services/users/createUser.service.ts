@@ -16,7 +16,8 @@ export const createUserService = async (data: iUserCreate): Promise<iUserCreateR
         description: !data.description ? null : data.description,
         isSeller: data.isSeller,
         password: data.password,
-        phone: data.phone
+        phone: data.phone,
+        color: data.color
     }
 
     const user: User = userRepo.create(userData)
