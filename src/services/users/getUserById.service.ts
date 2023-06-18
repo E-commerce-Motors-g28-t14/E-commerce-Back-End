@@ -5,11 +5,11 @@ import { userRepository } from "../../repositories"
 
 export const getUserByIdService = async (id: string): Promise<User | null> => {      
   
-    const user = await userRepository.findOne({
-        where:{id:id}
-      })     
+  const userRepo = AppDataSource.getRepository(User);
     
+  const user: User | undefined = await userRepo.findOne({where:{id: id}});
+  
+  return user || null;
 
-    return user || null;
    
 }
