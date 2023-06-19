@@ -36,7 +36,7 @@ export const loginUserService = async (data: iLoginUser): Promise<iLoginUserRetu
         },
         String(process.env.SECRET_KEY),
         {
-            expiresIn: '24h',
+            expiresIn: process.env.EXPIRES_IN,
             subject: String(user.id)
         }
     )
