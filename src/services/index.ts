@@ -8,6 +8,7 @@ import { getUserByEmailService } from "./users/getUserByEmail.service";
 import { createUserService } from "./users/createUser.service";
 import { loginUserService } from "./login/loginUser.service";
 import {getCarByIdService} from "./cars/GetCarById.service"
+import {getUserByIdService} from "./users/getUserById.service"
 
 export {
   CreateCarService,
@@ -20,5 +21,5 @@ export {
   createUserService,
   loginUserService,
   getCarByIdService
-
+  getUserByIdService
 };
