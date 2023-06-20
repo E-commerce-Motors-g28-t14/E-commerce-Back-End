@@ -10,6 +10,7 @@ import {
   attUserAddressController,
   attUserInfoController,
   createUserController,
+  deleteUserController,
   getUserByIdController,
 } from "./User.controller";
 import { loginUserController } from "./login.controller";
@@ -26,4 +27,5 @@ export {
   getUserByIdController,
   attUserInfoController,
   attUserAddressController,
+  deleteUserController,
 };

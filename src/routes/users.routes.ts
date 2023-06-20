@@ -11,6 +11,7 @@ import {
   attUserAddressController,
   attUserInfoController,
   createUserController,
+  deleteUserController,
   getUserByIdController,
 } from "../controllers";
 import { validateTokenMiddleware } from "../middlewares/validateToken.middleware";
@@ -42,6 +43,13 @@ userRouter.patch(
   validateTokenMiddleware,
   isOwnerId,
   attUserAddressController
+);
+
+userRouter.delete(
+  "/:id",
+  validateTokenMiddleware,
+  isOwnerId,
+  deleteUserController
 );
 
 export default userRouter;

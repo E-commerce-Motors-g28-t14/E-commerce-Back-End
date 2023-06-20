@@ -4,6 +4,7 @@ import {
   attUserAddressService,
   attUserService,
   createUserService,
+  deleteUserService,
   getUserByIdService,
 } from "../services";
 import { User } from "../entities";
@@ -49,4 +50,15 @@ export const attUserAddressController = async (
   const address = await attUserAddressService(req.body, id);
 
   return res.status(200).json(address);
+};
+
+export const deleteUserController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const id: string = res.locals.userToken.id;
+
+  await deleteUserService(id);
+
+  return res.status(204).send();
 };
