@@ -11,6 +11,7 @@ import { getCarByIdService } from "./cars/GetCarById.service";
 import { getUserByIdService } from "./users/getUserById.service";
 import { attUserService } from "./users/attUser.service";
 import { attUserAddressService } from "./users/attUserAddress.service";
+import { deleteUserService } from "./users/deleteUser.service";
 
 export {
   CreateCarService,
@@ -26,4 +27,5 @@ export {
   getUserByIdService,
   attUserService,
   attUserAddressService,
+  deleteUserService,
 };
