@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/mailer
+  C:\Program Files\nodejs\node.exe C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
 
 PATH: 
   C:\Users\osi\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\osi\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Users\osi\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\osi\AppData\Local\Programs\Python\Python311;C:\Users\osi\AppData\Local\Microsoft\WindowsApps;C:\Users\osi\AppData\Roaming\npm;C:\Users\osi\AppData\Local\GitHubDesktop\bin;C:\Program Files\PostgreSQL\15\bin;C:\Users\osi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,17 +14,12 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fmailer: Not found
-      at Request.params.callback [as _callback] (C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
-      at Request.self.callback (C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
-      at Request.emit (node:events:520:28)
-      at Request.<anonymous> (C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
-      at Request.emit (node:events:520:28)
-      at IncomingMessage.<anonymous> (C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
-      at Object.onceWrapper (node:events:639:28)
-      at IncomingMessage.emit (node:events:532:35)
-      at endReadableNT (node:internal/streams/readable:1346:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  SyntaxError: C:\Users\osi\Documents\M6\Projecto final\E-commerce-Back-End\package.json: Unexpected token < in JSON at position 1111
+      at JSON.parse (<anonymous>)
+      at C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\osi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
@@ -38,7 +33,7 @@ npm manifest:
       "typeorm": "typeorm-ts-node-commonjs",
       "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
       "build": "tsc",
-      "start": "node dist/server.js",
+      "start": "node dist/server.ts",
       "makemigrations": "typeorm-ts-node-commonjs migration:generate -d ./src/data-source.ts",
       "migrate": "typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts "
     },
@@ -59,14 +54,18 @@ npm manifest:
       "express-async-errors": "^3.1.1",
       "jest": "^29.5.0",
       "jsonwebtoken": "^8.5.1",
+  <<<<<<< HEAD
       "mailer": "^0.6.7",
       "nodemailer": "^6.9.3",
       "pg": "^8.7.3",
+  =======
+      "pg": "^8.11.0",
+  >>>>>>> 710803482d4b94e3f5f1693b41bd1ab2126dd741
       "reflect-metadata": "^0.1.13",
       "ts-jest": "^29.1.0",
       "ts-node": "10.9.1",
       "ts-node-dev": "^2.0.0",
-      "typeorm": "^0.3.6",
+      "typeorm": "0.3.6",
       "typescript": "^5.0.4",
       "uuid": "^9.0.0",
       "yup": "^0.32.11",

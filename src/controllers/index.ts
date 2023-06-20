@@ -4,8 +4,15 @@ import {
   GetCarsInfoController,
   UpdateCarController,
   RemoveCarController,
+  getCarByIdController,
 } from "./Car.Controller";
-import { createUserController } from "./User.controller";
+import {
+  attUserAddressController,
+  attUserInfoController,
+  createUserController,
+  deleteUserController,
+  getUserByIdController,
+} from "./User.controller";
 import { loginUserController } from "./login.controller";
 
 export {
@@ -15,5 +22,10 @@ export {
   UpdateCarController,
   RemoveCarController,
   createUserController,
-  loginUserController
+  loginUserController,
+  getCarByIdController,
+  getUserByIdController,
+  attUserInfoController,
+  attUserAddressController,
+  deleteUserController,
 };

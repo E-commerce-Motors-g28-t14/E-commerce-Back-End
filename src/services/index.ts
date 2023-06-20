@@ -7,6 +7,11 @@ import { getUserByCpfService } from "./users/getUserByCpf.service";
 import { getUserByEmailService } from "./users/getUserByEmail.service";
 import { createUserService } from "./users/createUser.service";
 import { loginUserService } from "./login/loginUser.service";
+import { getCarByIdService } from "./cars/GetCarById.service";
+import { getUserByIdService } from "./users/getUserById.service";
+import { attUserService } from "./users/attUser.service";
+import { attUserAddressService } from "./users/attUserAddress.service";
+import { deleteUserService } from "./users/deleteUser.service";
 
 export {
   CreateCarService,
@@ -17,5 +22,10 @@ export {
   getUserByCpfService,
   getUserByEmailService,
   createUserService,
-  loginUserService
+  loginUserService,
+  getCarByIdService,
+  getUserByIdService,
+  attUserService,
+  attUserAddressService,
+  deleteUserService,
 };

@@ -26,25 +26,26 @@ export const loginUserService = async (
     throw new AppError("Invalid credentials", 401);
   }
 
-  const comparePassword: boolean = await compare(data.password, user.password);
+ 
+    const comparePassword: boolean = await compare(data.password, user.password)
 
-  if (!comparePassword) {
-    throw new AppError("Invalid credentials", 401);
-  }
-
-  const token: string = sign(
-    {
-      isSeller: user.isSeller,
-    },
-    String(process.env.SECRET_KEY),
-    {
-      expiresIn: process.env.EXPIRES_IN,
-      subject: String(user.id),
+    if(!comparePassword){
+        throw new AppError("Invalid credentials", 401)
     }
-  );
 
-  return {
-    token,
-    user: userCreateReturnSchema.parse(user),
-  };
-};
+    const token: string = sign(
+        {
+            isSeller: user.isSeller
+        },
+        String(process.env.SECRET_KEY),
+        {
+            expiresIn: process.env.EXPIRES_IN,
+            subject: String(user.id)
+        }
+    )
+
+    return {
+        token,
+        user: userCreateReturnSchema.parse(user)
+    }
+}

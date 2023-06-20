@@ -28,7 +28,11 @@ export const validateTokenMiddleware = (
       }
 
       res.locals.userToken = {
+<<<<<<< HEAD
         id: String(decoded.sub),
+=======
+        id: decoded.sub,
+>>>>>>> 710803482d4b94e3f5f1693b41bd1ab2126dd741
         isSeller: decoded.isSeller,
       };
     }
