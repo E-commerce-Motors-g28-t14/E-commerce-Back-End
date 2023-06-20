@@ -7,9 +7,12 @@ export const getUserByIdService = async (id: string): Promise<User | null> => {
   
   const userRepo = AppDataSource.getRepository(User);
     
-  const user: User | undefined = await userRepo.findOne({where:{id: id}});
-  
+  const user: User | undefined = await userRepo.findOne({
+    where: { id: id },
+    relations: ['cars'], 
+  });
   return user || null;
 
    
 }
+
