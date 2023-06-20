@@ -11,8 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/cars", carRouter);
-app.use("/users", userRouter)
-app.use("/login", loginRouter)
+app.use("/users", userRouter);
+app.use("/login", loginRouter);
+app.use(userRouter);
 
 app.use(HandleError);
 

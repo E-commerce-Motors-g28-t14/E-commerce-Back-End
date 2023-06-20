@@ -7,8 +7,9 @@ AppDataSource.initialize()
     console.log("Database Connected");
 
     const port = process.env.PORT || 3002;
+    const url = process.env.URL_LOCAL || process.env.DEPLOY_URL;
     app.listen(port, () => {
-      console.log(`App is running on http://localhost:${port}`);
+      console.log(`App is running on ${url}${port}`);
     });
   })
   .catch((err) => console.error(err));
