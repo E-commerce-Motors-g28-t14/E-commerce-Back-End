@@ -34,6 +34,7 @@ const userCreateReturnSchema = userCreateSchema
     city: true,
     state: true,
     complement: true,
+    birthdate: true,
   });
 
 const userAttSchema = userCreateSchema.omit({

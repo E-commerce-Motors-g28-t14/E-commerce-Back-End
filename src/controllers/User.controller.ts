@@ -26,22 +26,17 @@ export const createUserController = async (
   return res.status(201).json(user);
 };
 
-export const getUsersController = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const users: iUserCreateReturn[] = await getUsersService();
+export const getUsersController = async (req: Request, res: Response) => {
+  const users = await getUsersService();
   return res.status(200).json(users);
 };
 
-export const getUserProfileController = async (
-  req: Request,
-  res: Response
-)=> {
+export const getUserProfileController = async (req: Request, res: Response) => {
   const userData = res.locals.userToken.id;
   console.log(userData);
 
   const user = await getUserProfileService(userData);
+};
 export const getUserByIdController = async (
   req: Request,
   res: Response
@@ -76,7 +71,7 @@ export const sendEmailRecoveryController = async (
 export const recoveryUserPasswordController = async (
   req: Request,
   res: Response
-)=> {
+) => {
   const newPassword: string = await req.body.password;
   const id = req.params.id;
   console.log(id);
