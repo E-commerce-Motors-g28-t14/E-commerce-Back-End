@@ -11,6 +11,8 @@ import {
   IPhotoRequest,
   IPhotoResponse,
 } from "./Photos.interfaces";
+import { iUserAtt } from "./User.interfaces";
+import { iAttAdress } from "./address.interfaces";
 import { iLoginUser, iLoginUserReturn } from "./login.interfaces";
 export {
   ICarRequest,
@@ -23,5 +25,7 @@ export {
   IPhotoArrayResponse,
   ICarInfoResponse,
   iLoginUser,
-  iLoginUserReturn
+  iLoginUserReturn,
+  iUserAtt,
+  iAttAdress,
 };

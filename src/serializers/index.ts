@@ -1,6 +1,6 @@
-import { 
-  createAddressReturnSchema, 
-  createAddressSchema 
+import {
+  createAddressReturnSchema,
+  createAddressSchema,
 } from "./addresses.serializers";
 import {
   carResponseSerializer,
@@ -17,9 +17,10 @@ import {
   photoRequestWithoutCarIdSerializer,
   photoResponseSerializer,
 } from "./photos.serializers";
-import { 
-  userCreateReturnSchema, 
-  userCreateSchema 
+import {
+  userAttSchema,
+  userCreateReturnSchema,
+  userCreateSchema,
 } from "./users.serializers";
 
 export {
@@ -37,5 +38,6 @@ export {
   userCreateSchema,
   userCreateReturnSchema,
   createAddressReturnSchema,
-  createAddressSchema
+  createAddressSchema,
+  userAttSchema,
 };
