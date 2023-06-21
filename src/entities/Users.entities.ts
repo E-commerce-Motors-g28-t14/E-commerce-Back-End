@@ -9,7 +9,7 @@ import {
   BeforeUpdate,
   BeforeInsert,
 } from "typeorm";
-import Address from "./Address.entities";
+import Address from "./Adress.entities";
 import Car from "./Cars.entities";
 import { getRounds, hashSync } from "bcryptjs";
 import Comment from "./Comments.entities";
@@ -44,7 +44,7 @@ class User {
   isSeller: boolean;
 
   @Column()
-  color: number
+  color: number;
 
   @OneToOne(() => Address, (address) => address.user)
   address: Address;
@@ -53,7 +53,7 @@ class User {
   cars: Car[];
 
   @OneToMany(() => Comment, (comment) => comment.user)
-  comments: Comment[]
+  comments: Comment[];
 
   @CreateDateColumn()
   createdAt: Date;

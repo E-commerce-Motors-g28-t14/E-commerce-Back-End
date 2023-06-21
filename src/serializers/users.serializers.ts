@@ -7,7 +7,7 @@ const userCreateSchema = z.object({
   email: z.string().max(150),
   cpf: z.string().max(150),
   color: z.number().nonnegative().max(12),
-  birthdate: z.string(),
+  birthdate: z.string().or(z.date()),
   phone: z.string().max(11),
   description: z.string().max(150).nullish(),
   isSeller: z.boolean().nullish().default(false),
