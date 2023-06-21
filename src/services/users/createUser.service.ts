@@ -3,7 +3,7 @@ import {
   iUserCreate,
   iUserCreateReturn,
 } from "../../interfaces/User.interfaces";
-import { Adress, User } from "../../entities";
+import { Address, User } from "../../entities";
 import AppDataSource from "../../data-source";
 import { userCreateReturnSchema } from "../../serializers";
 
@@ -11,7 +11,7 @@ export const createUserService = async (
   data: iUserCreate
 ): Promise<iUserCreateReturn> => {
   const userRepo: Repository<User> = AppDataSource.getRepository(User);
-  const addressRepo: Repository<Adress> = AppDataSource.getRepository(Adress);
+  const addressRepo: Repository<Address> = AppDataSource.getRepository(Address);
 
   const userData = {
     birthdate: data.birthdate,
@@ -38,7 +38,7 @@ export const createUserService = async (
     number: data.number,
   };
 
-  const address: Adress = addressRepo.create({ ...addressData, user });
+  const address: Address = addressRepo.create({ ...addressData, user });
 
   await addressRepo.save(address);
 

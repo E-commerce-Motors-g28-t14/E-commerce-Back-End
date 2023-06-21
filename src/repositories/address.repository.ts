@@ -1,4 +1,4 @@
 import AppDataSource from "../data-source";
-import { Adress } from "../entities";
+import { Address } from "../entities";
 
-export const addressRepository = AppDataSource.getRepository(Adress);
+export const addressRepository = AppDataSource.getRepository(Address);

@@ -35,7 +35,7 @@ userRouter.post(
 
 userRouter.get("", validateTokenMiddleware, getUsersController);
 userRouter.get("/profile", validateTokenMiddleware, getUserProfileController);
-userRouter.get("/recovery", sendEmailRecoveryController);
+userRouter.post("/recovery", sendEmailRecoveryController);
 userRouter.patch("/recovery/:id", recoveryUserPasswordController);
 userRouter.get("/:id", getUserByIdController);
 

@@ -8,8 +8,8 @@ import {
 import bcrypt from "bcryptjs";
 import Users from "./Users.entities";
 
-@Entity("Adress")
-export class Adress {
+@Entity("Address")
+export class Address {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -36,4 +36,4 @@ export class Adress {
   user: Users;
 }
 
-export default Adress;
+export default Address;
