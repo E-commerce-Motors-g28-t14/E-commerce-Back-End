@@ -5,7 +5,7 @@ import {
   GetCarsService,
   RemoveCarService,
   UpdateCarService,
-  getCarByIdService
+  getCarByIdService,
 } from "../services";
 import {
   ICarInfoResponse,
@@ -13,7 +13,6 @@ import {
   ICarResponse,
   ICarUpdate,
 } from "../interfaces";
- 
 
 const CreateCarController = async (
   req: Request,
@@ -38,7 +37,7 @@ const GetCarsInfoController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const carsInfo: ICarInfoResponse = await GetCarsInfoService();
+  const carsInfo = await GetCarsInfoService();
   return res.status(200).json(carsInfo);
 };
 
@@ -53,11 +52,10 @@ const UpdateCarController = async (
   return res.status(200).json(car);
 };
 
-
 const getCarByIdController = async (
   req: Request,
   res: Response
-): Promise<Response> => { 
+): Promise<Response> => {
   const carId: string = req.params.id;
 
   const car: ICarResponse = await getCarByIdService(carId);
@@ -81,5 +79,5 @@ export {
   GetCarsInfoController,
   UpdateCarController,
   RemoveCarController,
-  getCarByIdController
+  getCarByIdController,
 };
