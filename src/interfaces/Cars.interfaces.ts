@@ -35,6 +35,13 @@ interface ICarsIds{
   ids_Car_id: string
 }
 
+interface ICarsPagination{
+  previousPage: string | null;
+  nextPage: string | null;
+  count: number;
+  data: ICarResponse[];
+}
+
 export {
   ICarRequest,
   ICarResponse,
@@ -43,5 +50,6 @@ export {
   ICarInfoResponse,
   ICarsQuery,
   ICarsQueryArray,
-  ICarsIds
+  ICarsIds,
+  ICarsPagination
 };
