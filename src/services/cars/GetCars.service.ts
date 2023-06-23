@@ -1,10 +1,10 @@
 import AppDataSource from "../../data-source";
-import { Car, Photo } from "../../entities";
-import { ICarResponse, ICarsIds, ICarsQuery, ICarsQueryArray } from "../../interfaces";
+import { Car } from "../../entities";
+import { ICarResponse, ICarsIds, ICarsPagination, ICarsQuery, ICarsQueryArray } from "../../interfaces";
 import { carRepository } from "../../repositories";
 import { photoResponseSerializer } from "../../serializers";
 
-export const GetCarsService = async (queries: ICarsQuery): Promise<any> => {
+export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPagination> => {
   let page: number = Number(queries.page) || 1
   let perPage: number = Number(queries.perPage) || 12
 
