@@ -3,6 +3,7 @@ import {
   allPhotosRequestWithoutCarIdSerializer,
   allPhotosResponseSerializer,
 } from "./photos.serializers";
+import { userInfoSchema } from "./users.serializers";
 
 const carResponseSerializer = z.object({
   id: z.string(),
@@ -20,6 +21,10 @@ const carResponseSerializer = z.object({
   updatedAt: z.date(),
   photos: allPhotosResponseSerializer,
 });
+
+const carResponseSerializerUser = carResponseSerializer.extend({
+  user: userInfoSchema
+})
 
 const carRequestSerializer = carResponseSerializer
   .omit({
@@ -57,4 +62,5 @@ export {
   carRequestWithoutPhotosSerializer,
   carUpdateSerializer,
   carsInfoResponseSerializer,
+  carResponseSerializerUser
 };
