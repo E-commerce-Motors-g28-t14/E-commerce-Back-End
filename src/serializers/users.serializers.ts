@@ -36,6 +36,8 @@ const userCreateReturnSchema = userCreateSchema
     complement: true,
   });
 
+const userInfoSchema = userCreateReturnSchema.omit({ address: true })
+
 const userAttSchema = userCreateSchema.omit({
   password: true,
   color: true,
@@ -48,4 +50,4 @@ const userAttSchema = userCreateSchema.omit({
   complement: true,
 });
 
-export { userCreateSchema, userCreateReturnSchema, userAttSchema };
+export { userCreateSchema, userCreateReturnSchema, userAttSchema, userInfoSchema };

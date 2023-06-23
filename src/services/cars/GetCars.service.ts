@@ -1,8 +1,8 @@
 import AppDataSource from "../../data-source";
 import { Car } from "../../entities";
-import { ICarResponse, ICarsIds, ICarsPagination, ICarsQuery, ICarsQueryArray } from "../../interfaces";
+import { ICarResponse, ICarResponseUser, ICarsIds, ICarsPagination, ICarsQuery, ICarsQueryArray } from "../../interfaces";
 import { carRepository } from "../../repositories";
-import { photoResponseSerializer } from "../../serializers";
+import { photoResponseSerializer, userInfoSchema } from "../../serializers";
 
 export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPagination> => {
   let page: number = Number(queries.page) || 1
@@ -115,13 +115,19 @@ export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPaginati
     }
   }
 
-  const cars: ICarResponse[] = await carRepository.find({ 
+  const cars: ICarResponseUser[] = await carRepository.find({ 
     relations: { 
-      photos: true 
+      photos: true,
+      user: true
     },
     skip: perPage * (page - 1),
     take: perPage
   });
+
+  cars.map((element) => {
+    element.user = userInfoSchema.parse(element.user)
+    return element
+  })
 
   const carsNextPage: ICarResponse[] = await carRepository.find({
     skip: perPage * page,

@@ -7,7 +7,8 @@ import {
   ICarsQuery,
   ICarsQueryArray,
   ICarsIds,
-  ICarsPagination
+  ICarsPagination,
+  ICarResponseUser
 } from "./Cars.interfaces";
 import {
   IPhotoArrayRequest,
@@ -35,5 +36,6 @@ export {
   ICarsQuery,
   ICarsQueryArray,
   ICarsIds,
-  ICarsPagination
+  ICarsPagination,
+  ICarResponseUser
 };

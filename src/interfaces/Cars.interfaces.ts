@@ -3,6 +3,7 @@ import {
   carRequestSerializer,
   carRequestWithoutPhotosSerializer,
   carResponseSerializer,
+  carResponseSerializerUser,
   carUpdateSerializer,
   carsInfoResponseSerializer,
 } from "../serializers";
@@ -35,11 +36,13 @@ interface ICarsIds{
   ids_Car_id: string
 }
 
+type ICarResponseUser = z.infer<typeof carResponseSerializerUser>
+
 interface ICarsPagination{
   previousPage: string | null;
   nextPage: string | null;
   count: number;
-  data: ICarResponse[];
+  data: ICarResponseUser[];
 }
 
 export {
@@ -51,5 +54,6 @@ export {
   ICarsQuery,
   ICarsQueryArray,
   ICarsIds,
-  ICarsPagination
+  ICarsPagination,
+  ICarResponseUser
 };
