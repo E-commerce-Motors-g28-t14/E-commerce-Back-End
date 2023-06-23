@@ -4,6 +4,9 @@ import {
   ICarWithoutPhotosRequest,
   ICarUpdate,
   ICarInfoResponse,
+  ICarsQuery,
+  ICarsQueryArray,
+  ICarsIds
 } from "./Cars.interfaces";
 import {
   IPhotoArrayRequest,
@@ -28,4 +31,7 @@ export {
   iLoginUserReturn,
   iUserAtt,
   iAttAdress,
+  ICarsQuery,
+  ICarsQueryArray,
+  ICarsIds,
 };

@@ -5,12 +5,14 @@ import {
   photoRequestSerializer,
   photoResponseSerializer,
 } from "../serializers";
+import { Car } from "../entities";
 
 type IPhotoRequest = z.infer<typeof photoRequestSerializer>;
 type IPhotoResponse = z.infer<typeof photoResponseSerializer>;
 
 type IPhotoArrayRequest = z.infer<typeof allPhotosRequestSerializer>;
 type IPhotoArrayResponse = z.infer<typeof allPhotosResponseSerializer>;
+
 
 export {
   IPhotoRequest,
