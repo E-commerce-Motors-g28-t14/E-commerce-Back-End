@@ -36,6 +36,8 @@ export const getUserProfileController = async (req: Request, res: Response) => {
   console.log(userData);
 
   const user = await getUserProfileService(userData);
+
+  return res.status(200).json(user);
 };
 export const getUserByIdController = async (
   req: Request,
