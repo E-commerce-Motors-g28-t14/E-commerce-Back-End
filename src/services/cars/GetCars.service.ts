@@ -1,5 +1,5 @@
 import AppDataSource from "../../data-source";
-import { Car } from "../../entities";
+import { Car, User } from "../../entities";
 import { ICarResponse, ICarResponseUser, ICarsIds, ICarsPagination, ICarsQuery, ICarsQueryArray } from "../../interfaces";
 import { carRepository } from "../../repositories";
 import { photoResponseSerializer, userInfoSchema } from "../../serializers";
@@ -82,12 +82,12 @@ export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPaginati
 
     let carsPhotos: any[] = []
 
-    let cars: Car[] = []
+    let cars: any[] = []
 
     if(carsId.length){
       carsPhotos = await AppDataSource.manager.query(`SELECT * FROM "photos" WHERE "photos"."carId" IN (${carsId.map((key, index) => `$${index + 1}`)})`, carsId.map((key) => key.ids_Car_id))
 
-      cars = await AppDataSource.manager.query(`SELECT "cars"."id", "cars"."brand", "cars"."model", "cars"."year", "cars"."fuel", "cars"."km", "cars"."color", "cars"."isPromo", "cars"."price", "cars"."description", "cars"."isActive", "cars"."createdAt", "cars"."updatedAt" FROM "cars" WHERE "cars"."id" IN (${carsId.map((key, index) => `$${index + 1}`)})`, carsId.map((key) => key.ids_Car_id))
+      cars = await AppDataSource.manager.query(`SELECT "cars"."id", "cars"."userId","cars"."brand", "cars"."model", "cars"."year", "cars"."fuel", "cars"."km", "cars"."color", "cars"."isPromo", "cars"."price", "cars"."description", "cars"."isActive", "cars"."createdAt", "cars"."updatedAt" FROM "cars" WHERE "cars"."id" IN (${carsId.map((key, index) => `$${index + 1}`)})`, carsId.map((key) => key.ids_Car_id))
 
       carsPhotos.forEach((photo) => {
         cars.forEach((car) => {
@@ -101,8 +101,22 @@ export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPaginati
           }
         })  
       })
-    }
 
+      const usersId: string[] = cars.map((car) => car.userId)
+
+      let users: any[] = await AppDataSource.manager.query(`SELECT * FROM "users" WHERE "users"."id" IN (${usersId.map((key, index) => `$${index + 1}`)})`, usersId)
+
+      users.forEach((user) => {
+        const userSerialized = userInfoSchema.parse(user)
+        cars.forEach((car) => {
+          if(car?.userId === userSerialized.id){
+            car.user = userSerialized
+            delete car.userId
+          }
+        })
+      })
+    }
+    
     const queryNextPage: Car[] = await AppDataSource.manager.query(select + filter + nextPage, queryValues)
 
     const queryAllCars: Car[] = await AppDataSource.manager.query(select + filter, queryValues)
@@ -115,7 +129,7 @@ export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPaginati
     }
   }
 
-  const cars: ICarResponseUser[] = await carRepository.find({ 
+  let cars: ICarResponseUser[] = await carRepository.find({ 
     relations: { 
       photos: true,
       user: true
@@ -124,7 +138,7 @@ export const GetCarsService = async (queries: ICarsQuery): Promise<ICarsPaginati
     take: perPage
   });
 
-  cars.map((element) => {
+  cars = cars.map((element) => {
     element.user = userInfoSchema.parse(element.user)
     return element
   })
