@@ -29,7 +29,8 @@ const GetCarsController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const cars: ICarResponse[] = await GetCarsService();
+  const queries = req.query
+  const cars: ICarResponse[] = await GetCarsService(queries);
   return res.status(200).json(cars);
 };
 
