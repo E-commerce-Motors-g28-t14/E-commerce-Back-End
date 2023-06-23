@@ -3,6 +3,12 @@ import { validateBodyMiddleware } from "../middlewares/validateBody.middleware";
 import { isCpfUniqueMiddleware } from "../middlewares/isCpfUnique.middleware";
 import { isEmailUniqueMiddleware } from "../middlewares/isEmailUnique.middleware";
 import {
+  getUserProfileController,
+  getUsersController,
+  recoveryUserPasswordController,
+  sendEmailRecoveryController,
+} from "../controllers/User.controller";
+import {
   createAddressSchema,
   userAttSchema,
   userCreateSchema,
@@ -26,6 +32,11 @@ userRouter.post(
   isEmailUniqueMiddleware,
   createUserController
 );
+
+userRouter.get("", validateTokenMiddleware, getUsersController);
+userRouter.get("/profile", validateTokenMiddleware, getUserProfileController);
+userRouter.post("/recovery", sendEmailRecoveryController);
+userRouter.patch("/recovery/:id", recoveryUserPasswordController);
 userRouter.get("/:id", getUserByIdController);
 
 userRouter.patch(

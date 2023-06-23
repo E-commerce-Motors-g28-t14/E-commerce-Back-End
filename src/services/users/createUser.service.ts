@@ -22,7 +22,7 @@ export const createUserService = async (
     isSeller: data.isSeller,
     password: data.password,
     phone: data.phone,
-    color: 1,
+    color: data.color || 1,
   };
 
   const user: User = userRepo.create(userData);

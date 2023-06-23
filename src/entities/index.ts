@@ -1,4 +1,4 @@
-import Address from "./Address.entities";
+import Address from "./Adress.entities";
 import Car from "./Cars.entities";
 import Photo from "./Photos.entities";
 import User from "./Users.entities";
