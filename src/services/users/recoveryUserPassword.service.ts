@@ -46,7 +46,7 @@ export const sendEmailRecoveryService = async (email: string) => {
   });
 
   const url = process.env.DEPLOY_URL || process.env.URL_LOCAL;
-  const porta = process.env.PORT || 3002;
+  const porta = process.env.PORT_EMAIL || 3002;
 
   const mailOptions = {
     from: process.env.EMAIL,

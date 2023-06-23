@@ -7,7 +7,7 @@ export const deleteUserService = async (userId: string) => {
     },
   });
 
-  await userRepository.remove(user);
+  await userRepository.delete(user.id);
 
   return;
 };

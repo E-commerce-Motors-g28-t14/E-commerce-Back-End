@@ -12,7 +12,7 @@ class Photo {
   @Column({ default: false })
   isCover: boolean;
 
-  @ManyToOne(() => Car, (Car) => Car.photos)
+  @ManyToOne(() => Car, (Car) => Car.photos, { onDelete: "CASCADE" })
   car: Car;
 }
 
