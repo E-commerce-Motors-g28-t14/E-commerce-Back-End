@@ -31,7 +31,7 @@ export class Address {
   @Column({ length: 150 })
   complement: string;
 
-  @OneToOne(() => Users)
+  @OneToOne(() => Users, { onDelete: "CASCADE" })
   @JoinColumn()
   user: Users;
 }

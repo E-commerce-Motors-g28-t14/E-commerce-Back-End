@@ -22,7 +22,7 @@ const dataSourceConfig = (): DataSourceOptions => {
     };
   }
 
-  if (!dbUrl) {
+  if (!dbUrl) {   
     throw new Error("Env var DATABASE_URL does not exists");
   }
 

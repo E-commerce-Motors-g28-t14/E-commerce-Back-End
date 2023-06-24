@@ -52,10 +52,10 @@ class Car {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, (User) => User.cars)
+  @ManyToOne(() => User, (User) => User.cars, { onDelete: "CASCADE" })
   user: User;
 
-  @OneToMany(() => Photo, (Photo) => Photo.car)
+  @OneToMany(() => Photo, (Photo) => Photo.car, { cascade: true })
   photos: Photo[];
 
   @OneToMany(() => Comment, (Comment) => Comment.car)
