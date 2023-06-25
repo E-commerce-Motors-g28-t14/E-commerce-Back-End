@@ -2,8 +2,6 @@
 
 Development of a RESTful API for an e-commerce car selling platform using Node.js with the Express, TypeORM, jsonwebtoken, and bcryptjs libraries.
 
-The API was built to provide an interface for a system with RESTful functionalities in the context of an e-commerce platform for selling cars. Using Node.js as the development platform, the following libraries were utilized:
-
 ## Technologies Used
 
 The API was built to provide an interface for a system with RESTful functionalities in the context of an e-commerce platform for selling cars. Using Node.js as the development platform, the following libraries were utilized:
