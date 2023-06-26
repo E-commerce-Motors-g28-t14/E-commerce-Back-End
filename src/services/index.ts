@@ -12,6 +12,10 @@ import { getUserByIdService } from "./users/getUserById.service";
 import { attUserService } from "./users/attUser.service";
 import { attUserAddressService } from "./users/attUserAddress.service";
 import { deleteUserService } from "./users/deleteUser.service";
+import {GetCommentsByIDService} from "./comments/GetCommentByID.service"
+import {CreateCommentService} from "./comments/CreateComments.service"
+import {GetCommentsService} from "./comments/GetComments.service"
+import {DeleteCommentsService} from './comments/DeleteComments.service'
 
 export {
   CreateCarService,
@@ -28,4 +32,8 @@ export {
   attUserService,
   attUserAddressService,
   deleteUserService,
+  GetCommentsByIDService,
+  CreateCommentService,
+  GetCommentsService,
+  DeleteCommentsService
 };

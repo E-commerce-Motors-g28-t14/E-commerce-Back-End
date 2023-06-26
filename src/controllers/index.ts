@@ -15,6 +15,11 @@ import {
 } from "./User.controller";
 import { loginUserController } from "./login.controller";
 
+import {CreateCommentController,
+  GetCommentsController,
+  GetCommentsByIDController,
+  DeleteCommentsController} from "./Comments.Controller"
+
 export {
   CreateCarController,
   GetCarsController,
@@ -28,4 +33,10 @@ export {
   attUserInfoController,
   attUserAddressController,
   deleteUserController,
+  CreateCommentController,
+  GetCommentsController,
+  GetCommentsByIDController,
+  DeleteCommentsController
+  
+
 };
