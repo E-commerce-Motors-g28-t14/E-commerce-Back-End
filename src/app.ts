@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/cars", carRouter);
 app.use("/users", userRouter);
 app.use("/login", loginRouter);
-app.use("comments/", commentRouter)
+app.use("/comments", commentRouter)
 app.use(userRouter);
 
 app.use(HandleError);
