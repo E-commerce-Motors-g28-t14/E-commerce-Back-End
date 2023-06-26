@@ -28,7 +28,7 @@ class Comment {
   car: Car;
 
   @ManyToOne(() => User, (user) => user.comments)
-  user: User
+  user: User;
 }
 
 export default Comment;
