@@ -13,6 +13,7 @@ import Address from "./Adress.entities";
 import Car from "./Cars.entities";
 import { getRounds, hashSync } from "bcryptjs";
 import Comment from "./Comments.entities";
+import { v4 as uuid } from "uuid";
 
 @Entity("users")
 class User {
@@ -68,6 +69,12 @@ class User {
 
     if (!rounds) {
       this.password = hashSync(this.password, 10);
+    }
+  }
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
     }
   }
 }
