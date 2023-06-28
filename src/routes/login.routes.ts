@@ -14,8 +14,8 @@ const loginRouter: Router = Router()
 /**
  * @swagger
  * /login:
- *   post:arn 
- *     summary: User login
+ *   post:
+ *     summary: Authentication
  *     tags: [Login]
  *     requestBody:
  *       required: true
@@ -32,7 +32,7 @@ const loginRouter: Router = Router()
  *                 type: string
  *                 description: Password of the user
  *             example:
- *               email: "exemple@mail.com"
+ *               email: "example@mail.com"
  *               password: "@Password123"
  *     responses:
  *       200:
@@ -44,6 +44,8 @@ const loginRouter: Router = Router()
  *               properties:
  *                 token:
  *                   type: string
+ *                 user: 
+ *                   type: object
  *                   description: Authentication token
  *       400:
  *         description: Error in the request
