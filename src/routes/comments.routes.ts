@@ -39,14 +39,9 @@ const commentRouter: Router = Router();
  *                 type: string
  *                 format: uuid
  *                 description: ID of the car related to the comment
- *               user:
- *                 type: string
- *                 format: uuid
- *                 description: ID of the user creating the comment
  *           example:
  *             comment: "Novo comentário!"
- *             car: "ee204f96-b570-4126-822f-9312490e8c20"
- *             user: "d39c2737-503d-4881-bc48-9ba2147ca15c"
+ *             car: "ee204f96-b570-4126-822f-9312490e8c20"           
  *     responses:
  *       201:
  *         description: Comment created successfully
