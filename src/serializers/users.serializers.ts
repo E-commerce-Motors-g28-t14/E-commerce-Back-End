@@ -8,7 +8,7 @@ const userCreateSchema = z.object({
   cpf: z.string().max(150),
   color: z.number().nonnegative().max(12),
   birthdate: z.string().or(z.date()),
-  phone: z.string().max(11),
+  phone: z.string().max(16),
   description: z.string().max(150).nullish(),
   isSeller: z.boolean().nullish().default(false),
   district: z.string().max(150),
