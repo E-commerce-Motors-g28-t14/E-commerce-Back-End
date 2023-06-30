@@ -42,11 +42,12 @@ export const sendEmailRecoveryService = async (email: string) => {
     auth: {
       user: process.env.EMAIL,
       pass: process.env.PASSWORD,
+      accessToken: token,
     },
   });
 
   const url = process.env.DEPLOY_URL || process.env.URL_LOCAL;
-  const porta = process.env.PORT_EMAIL || 3002;
+  const porta = process.env.PORT_EMAIL || 5173;
 
   const mailOptions = {
     from: process.env.EMAIL,
