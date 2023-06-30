@@ -9,7 +9,7 @@ const carResponseSerializer = z.object({
   id: z.string(),
   brand: z.string().max(150),
   model: z.string().max(150),
-  year: z.number(),
+  year: z.string(),
   fuel: z.number(),
   km: z.number(),
   color: z.string().max(150),
@@ -23,8 +23,8 @@ const carResponseSerializer = z.object({
 });
 
 const carResponseSerializerUser = carResponseSerializer.extend({
-  user: userInfoSchema
-})
+  user: userInfoSchema,
+});
 
 const carRequestSerializer = carResponseSerializer
   .omit({
@@ -62,5 +62,5 @@ export {
   carRequestWithoutPhotosSerializer,
   carUpdateSerializer,
   carsInfoResponseSerializer,
-  carResponseSerializerUser
+  carResponseSerializerUser,
 };

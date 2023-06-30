@@ -23,7 +23,7 @@ class Car {
   model: string;
 
   @Column()
-  year: number;
+  year: string;
 
   @Column()
   fuel: number;
