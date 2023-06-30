@@ -7,6 +7,7 @@ import {
   carUpdateSerializer,
   carsInfoResponseSerializer,
 } from "../serializers";
+import { carWithPhotosAndUserSchema } from "../serializers/cars.serializers";
 
 type ICarRequest = z.infer<typeof carRequestSerializer>;
 type ICarWithoutPhotosRequest = z.infer<
@@ -27,24 +28,36 @@ interface ICarsQuery {
   minKm?: string;
   maxKm?: string;
   page?: string;
-  perPage?: string
+  perPage?: string;
 }
 
-type ICarsQueryArray = "brand" | "model" | "color" | "year" | "fuel" | "minPrice" | "maxPrice" | "minKm" | "maxKm" | "page" | "perPage" 
+type ICarsQueryArray =
+  | "brand"
+  | "model"
+  | "color"
+  | "year"
+  | "fuel"
+  | "minPrice"
+  | "maxPrice"
+  | "minKm"
+  | "maxKm"
+  | "page"
+  | "perPage";
 
-interface ICarsIds{
-  ids_Car_id: string
+interface ICarsIds {
+  ids_Car_id: string;
 }
 
-type ICarResponseUser = z.infer<typeof carResponseSerializerUser>
+type ICarResponseUser = z.infer<typeof carResponseSerializerUser>;
 
-interface ICarsPagination{
+interface ICarsPagination {
   previousPage: string | null;
   nextPage: string | null;
   count: number;
   data: ICarResponseUser[];
 }
 
+type iCarWithPhotoAndUser = z.infer<typeof carWithPhotosAndUserSchema>;
 export {
   ICarRequest,
   ICarResponse,
@@ -55,5 +68,6 @@ export {
   ICarsQueryArray,
   ICarsIds,
   ICarsPagination,
-  ICarResponseUser
+  ICarResponseUser,
+  iCarWithPhotoAndUser,
 };

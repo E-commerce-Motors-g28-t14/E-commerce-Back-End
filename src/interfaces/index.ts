@@ -8,7 +8,8 @@ import {
   ICarsQueryArray,
   ICarsIds,
   ICarsPagination,
-  ICarResponseUser
+  ICarResponseUser,
+  iCarWithPhotoAndUser,
 } from "./Cars.interfaces";
 import {
   IPhotoArrayRequest,
@@ -16,7 +17,12 @@ import {
   IPhotoRequest,
   IPhotoResponse,
 } from "./Photos.interfaces";
-import { iUserAtt } from "./User.interfaces";
+import {
+  iUserAtt,
+  iUserWithoutAddress,
+  iUserWithAddressAndCarsAndPhotos,
+  iUserWithCarsAndPhoto,
+} from "./User.interfaces";
 import { iAttAdress } from "./address.interfaces";
 import { iLoginUser, iLoginUserReturn } from "./login.interfaces";
 export {
@@ -37,5 +43,5 @@ export {
   ICarsQueryArray,
   ICarsIds,
   ICarsPagination,
-  ICarResponseUser
+  ICarResponseUser,
 };

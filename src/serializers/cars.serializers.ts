@@ -3,13 +3,13 @@ import {
   allPhotosRequestWithoutCarIdSerializer,
   allPhotosResponseSerializer,
 } from "./photos.serializers";
-import { userInfoSchema } from "./users.serializers";
+import { userCreateReturnSchema, userInfoSchema } from "./users.serializers";
 
 const carResponseSerializer = z.object({
   id: z.string(),
   brand: z.string().max(150),
   model: z.string().max(150),
-  year: z.string(),
+  year: z.string().or(z.number().transform(String)),
   fuel: z.number(),
   km: z.number(),
   color: z.string().max(150),
@@ -21,6 +21,8 @@ const carResponseSerializer = z.object({
   updatedAt: z.date(),
   photos: allPhotosResponseSerializer,
 });
+
+const carResponseArraySerializer = carResponseSerializer.array();
 
 const carResponseSerializerUser = carResponseSerializer.extend({
   user: userInfoSchema,
@@ -56,6 +58,9 @@ const carsInfoResponseSerializer = z.object({
   colors: z.string().array(),
 });
 
+const carWithPhotosAndUserSchema = carResponseSerializer.extend({
+  user: userCreateReturnSchema,
+});
 export {
   carResponseSerializer,
   carRequestSerializer,
@@ -63,4 +68,6 @@ export {
   carUpdateSerializer,
   carsInfoResponseSerializer,
   carResponseSerializerUser,
+  carResponseArraySerializer,
+  carWithPhotosAndUserSchema,
 };

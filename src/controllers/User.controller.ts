@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { iUserCreate, iUserCreateReturn } from "../interfaces/User.interfaces";
+import {
+  iUserCreate,
+  iUserCreateReturn,
+  iUserWithCarsAndPhoto,
+  iUserWithoutAddress,
+} from "../interfaces/User.interfaces";
 import { getUsersService } from "../services/users/getUsers.service";
 import { getUserProfileService } from "../services/users/getUserProfile.service";
 import {
@@ -45,7 +50,7 @@ export const getUserByIdController = async (
 ): Promise<Response> => {
   const id: string = req.params.id;
 
-  const user: User | null = await getUserByIdService(id);
+  const user: iUserWithCarsAndPhoto = await getUserByIdService(id);
   return res.status(200).json(user);
 };
 

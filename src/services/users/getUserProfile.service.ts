@@ -1,10 +1,15 @@
 import { Repository } from "typeorm";
 import { User } from "../../entities";
 import AppDataSource from "../../data-source";
+import { userCreateReturnSchema } from "../../serializers";
+import {
+  iUserCreateReturn,
+  iUserWithAddressAndCarsAndPhotos,
+} from "../../interfaces/User.interfaces";
 
 export const getUserProfileService = async (
   id: string
-): Promise<User | null> => {
+): Promise<iUserWithAddressAndCarsAndPhotos | null> => {
   const userRepo: Repository<User> = AppDataSource.getRepository(User);
   const user = await userRepo.findOne({
     where: { id: id },
@@ -14,5 +19,9 @@ export const getUserProfileService = async (
     },
   });
 
-  return user;
+  const { cars, ...payload } = user;
+
+  const userReturn = userCreateReturnSchema.parse(payload);
+
+  return { ...userReturn, cars: cars };
 };

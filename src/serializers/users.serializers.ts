@@ -1,5 +1,9 @@
 import { date, z } from "zod";
 import { createAddressReturnSchema } from "./addresses.serializers";
+import {
+  carResponseArraySerializer,
+  carResponseSerializer,
+} from "./cars.serializers";
 
 const userCreateSchema = z.object({
   name: z.string().max(150),
@@ -53,9 +57,28 @@ const userAttSchema = userCreateSchema.omit({
   complement: true,
 });
 
+const userWithoutAddressReturnSchema = userCreateReturnSchema.omit({
+  address: true,
+});
+
+const userWithCarsAndPhotosSchema = userCreateReturnSchema
+  .omit({
+    address: true,
+  })
+  .extend({
+    cars: carResponseArraySerializer,
+  });
+
+const userWithAllDataSchema = userCreateReturnSchema.extend({
+  cars: carResponseArraySerializer,
+});
+
 export {
   userCreateSchema,
   userCreateReturnSchema,
   userAttSchema,
   userInfoSchema,
+  userWithoutAddressReturnSchema,
+  userWithAllDataSchema,
+  userWithCarsAndPhotosSchema,
 };
