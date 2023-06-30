@@ -1,13 +1,16 @@
-
-
 import { getRepository } from "typeorm";
 
-import { ICommentRequest, ICommentResponse } from "../../interfaces/comments.interfaces";
+import {
+  ICommentRequest,
+  ICommentResponse,
+} from "../../interfaces/comments.interfaces";
 import { Car, User, Comment } from "../../entities";
 import AppDataSource from "../../data-source";
 
-export const CreateCommentService = async (data : ICommentRequest,   idUser: string,  idCar: string): Promise<ICommentResponse> => {
-
+export const CreateCommentService = async (
+  data: ICommentRequest,
+  idUser: string
+): Promise<ICommentResponse> => {
   const userRepository = AppDataSource.getRepository(User);
   const carRepository = AppDataSource.getRepository(Car);
   const commentRepository = AppDataSource.getRepository(Comment);
@@ -15,11 +18,11 @@ export const CreateCommentService = async (data : ICommentRequest,   idUser: str
   const user = await userRepository.findOne({ where: { id: idUser } });
   if (!user) throw new Error("User not found");
 
-  const car = await carRepository.findOne({ where: { id: idCar } });
+  const car = await carRepository.findOne({ where: { id: data.car } });
   if (!car) throw new Error("Car not found");
 
-  const commentData  = {
-    comment: data.comment.comment,  
+  const commentData = {
+    comment: data.comment,
     user: user,
     car: car,
   };
@@ -31,9 +34,9 @@ export const CreateCommentService = async (data : ICommentRequest,   idUser: str
   // const commentResponse: ICommentResponse = {
   //   id: newComment.id,
   //   comment: data.comment,
-  //   user: user,  
-  //   car: car,  
+  //   user: user,
+  //   car: car,
   // };
 
   return newComment;
-}
+};

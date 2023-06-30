@@ -8,7 +8,7 @@ import {
 import bcrypt from "bcryptjs";
 import Users from "./Users.entities";
 
-@Entity("Address")
+@Entity("address")
 export class Address {
   @PrimaryGeneratedColumn("uuid")
   id: string;
@@ -18,6 +18,9 @@ export class Address {
 
   @Column({ length: 150 })
   zipCode: string;
+
+  @Column()
+  street: string;
 
   @Column({ length: 150 })
   number: string;

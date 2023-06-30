@@ -58,7 +58,7 @@ class Car {
   @OneToMany(() => Photo, (Photo) => Photo.car, { cascade: true })
   photos: Photo[];
 
-  @OneToMany(() => Comment, (Comment) => Comment.car)
+  @OneToMany(() => Comment, (Comment) => Comment.car, { cascade: true })
   comments: Comment[];
 }
 

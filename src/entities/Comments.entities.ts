@@ -24,10 +24,10 @@ class Comment {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => Car, (Car) => Car.comments)
+  @ManyToOne(() => Car, (Car) => Car.comments, { onDelete: "CASCADE" })
   car: Car;
 
-  @ManyToOne(() => User, (user) => user.comments)
+  @ManyToOne(() => User, (user) => user.comments, { onDelete: "CASCADE" })
   user: User;
 }
 

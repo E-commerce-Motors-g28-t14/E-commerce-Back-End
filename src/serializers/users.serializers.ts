@@ -13,6 +13,7 @@ const userCreateSchema = z.object({
   isSeller: z.boolean().nullish().default(false),
   district: z.string().max(150),
   zipCode: z.string().max(150),
+  street: z.string().max(150),
   number: z.string().max(150),
   city: z.string().max(150),
   state: z.string().max(3),
@@ -30,13 +31,14 @@ const userCreateReturnSchema = userCreateSchema
     password: true,
     district: true,
     zipCode: true,
+    street: true,
     number: true,
     city: true,
     state: true,
     complement: true,
   });
 
-const userInfoSchema = userCreateReturnSchema.omit({ address: true })
+const userInfoSchema = userCreateReturnSchema.omit({ address: true });
 
 const userAttSchema = userCreateSchema.omit({
   password: true,
@@ -44,10 +46,16 @@ const userAttSchema = userCreateSchema.omit({
   isSeller: true,
   district: true,
   zipCode: true,
+  street: true,
   number: true,
   city: true,
   state: true,
   complement: true,
 });
 
-export { userCreateSchema, userCreateReturnSchema, userAttSchema, userInfoSchema };
+export {
+  userCreateSchema,
+  userCreateReturnSchema,
+  userAttSchema,
+  userInfoSchema,
+};

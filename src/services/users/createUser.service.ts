@@ -36,6 +36,7 @@ export const createUserService = async (
     zipCode: data.zipCode,
     district: data.district,
     number: data.number,
+    street: data.street,
   };
 
   const address: Address = addressRepo.create({ ...addressData, user });

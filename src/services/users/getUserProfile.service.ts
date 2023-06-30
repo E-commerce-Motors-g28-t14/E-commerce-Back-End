@@ -9,7 +9,7 @@ export const getUserProfileService = async (
   const user = await userRepo.findOne({
     where: { id: id },
     relations: {
-      cars: true,
+      cars: { photos: true },
       address: true,
     },
   });

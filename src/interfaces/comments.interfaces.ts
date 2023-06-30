@@ -1,23 +1,22 @@
-import { z } from "zod"
-import { createCommentSchema } from "../serializers/comments.serializers"
-import { ICarResponse } from "./Cars.interfaces"
-import { iUserCreateReturn } from "./User.interfaces"
+import { z } from "zod";
+import { createCommentSchema } from "../serializers/comments.serializers";
+import { ICarResponse } from "./Cars.interfaces";
+import { iUserCreateReturn } from "./User.interfaces";
 
-type ICreateComment = z.infer<typeof createCommentSchema>
+type ICreateComment = z.infer<typeof createCommentSchema>;
 
 interface ICommentRequest {
-  comment: ICreateComment,
-  car: string,
-  user: string
+  comment: string;
+  car: string;
 }
 
 interface ICommentResponse {
-    id: string
-    comment: string,
-    car: ICarResponse,
-    user: iUserCreateReturn,
-    createdAt: Date,
-    updatedAt: Date
-  }
+  id: string;
+  comment: string;
+  car: ICarResponse;
+  user: iUserCreateReturn;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-export { ICreateComment, ICommentResponse, ICommentRequest }
+export { ICreateComment, ICommentResponse, ICommentRequest };
