@@ -3,10 +3,12 @@ import {
     CreateCommentController,
     GetCommentsController,
     GetCommentsByIDController,
-    DeleteCommentsController
+    DeleteCommentsController,
+    UpdateCommentController
 } from "../controllers";
 import { validateTokenMiddleware } from '../middlewares/validateToken.middleware';
 import { isSellerMiddleware } from '../middlewares/isSeller.middleware';
+ 
 
 
 
@@ -411,6 +413,51 @@ commentRouter.get("", GetCommentsController);
  *                       description: Date and time of last user update
  */
 commentRouter.get("/:id", GetCommentsByIDController); 
+
+
+
+/**
+ * @swagger
+ * /comments/{id}:
+ *   patch:
+ *     summary: Update a comment by ID
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: ID of the comment to update
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               comment:
+ *                 type: string
+ *                 description: Updated comment text
+ *             required:
+ *               - comment
+ *     responses:
+ *       200:
+ *         description: Comment updated successfully
+ *       400:
+ *         description: Bad request
+ *       401:
+ *         description: Unauthorized access
+ *       403:
+ *         description: Forbidden operation
+ *       404:
+ *         description: Comment not found
+ */
+
+commentRouter.patch("/:id", validateTokenMiddleware, UpdateCommentController);
+   
+
 
 /**
  * @swagger
