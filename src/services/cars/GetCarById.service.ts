@@ -6,7 +6,7 @@ export const getCarByIdService = async (id: string): Promise<Car | null> => {
 
   const car: Car | undefined = await carRepo.findOne({
     where: { id: id },
-    relations: { photos: true, user: true },
+    relations: { photos: true, user: true, comments: true },
   });
 
   return car || null;
