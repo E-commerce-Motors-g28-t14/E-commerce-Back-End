@@ -19,4 +19,9 @@ interface ICommentResponse {
   updatedAt: Date;
 }
 
-export { ICreateComment, ICommentResponse, ICommentRequest };
+interface ICommentUpdate { 
+  comment: string;
+  
+}
+
+export { ICreateComment, ICommentResponse, ICommentRequest, ICommentUpdate };

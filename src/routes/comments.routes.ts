@@ -4,9 +4,9 @@ import {
   GetCommentsController,
   GetCommentsByIDController,
   DeleteCommentsController,
+  UpdateCommentController,
 } from "../controllers";
-import { validateTokenMiddleware } from "../middlewares/validateToken.middleware";
-import { isSellerMiddleware } from "../middlewares/isSeller.middleware";
+import { validateTokenMiddleware } from "../middlewares/validateToken.middleware"; 
 import { verifyCarExistsMiddleware } from "../middlewares";
 
 const commentRouter: Router = Router();
@@ -271,7 +271,7 @@ commentRouter.get("", GetCommentsController);
 
 /**
  * @swagger
- * /comments/{id}:
+ * /comments/cars/:{id}:
  *   get:
  *     summary: Get comment by ID
  *     tags: [Comments]
@@ -408,11 +408,53 @@ commentRouter.get("", GetCommentsController);
  *                       format: date-time
  *                       description: Date and time of last user update
  */
-commentRouter.get(
-  "/cars/:id",
-  verifyCarExistsMiddleware,
-  GetCommentsByIDController
-);
+
+commentRouter.get(  "/cars/:id", verifyCarExistsMiddleware, GetCommentsByIDController);
+
+
+
+/**
+ * @swagger
+ * /comments/{id}:
+ *   patch:
+ *     summary: Update a comment by ID
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: ID of the comment to update
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               comment:
+ *                 type: string
+ *                 description: Updated comment text
+ *             required:
+ *               - comment
+ *     responses:
+ *       200:
+ *         description: Comment updated successfully
+ *       400:
+ *         description: Bad request
+ *       401:
+ *         description: Unauthorized access
+ *       403:
+ *         description: Forbidden operation
+ *       404:
+ *         description: Comment not found
+ */
+
+commentRouter.patch("/:id", validateTokenMiddleware, UpdateCommentController);
+   
+
 
 /**
  * @swagger

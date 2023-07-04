@@ -8,6 +8,7 @@ import {
   GetCommentsByIDService,
   GetCommentsService,
   CreateCommentService,
+  UpdateCommentService,
 } from "../services";
 
 export const CreateCommentController = async (
@@ -39,6 +40,23 @@ export const GetCommentsByIDController = async (
   const comment = await GetCommentsByIDService(id);
 
   return res.status(200).json(comment);
+};
+
+export const UpdateCommentController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const id: string = req.params.id;
+  const { comment } = req.body;
+
+  try {
+    const commentUpdated = await UpdateCommentService(id, comment);
+    return res.status(200).json(commentUpdated);
+  } catch (error) {
+    return res.status(500).json({ error: 'Failed to update comment.' });
+  }
+
+
 };
 
 export const DeleteCommentsController = async (

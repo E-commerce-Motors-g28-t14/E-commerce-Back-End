@@ -18,7 +18,7 @@ import { loginUserController } from "./login.controller";
 import {CreateCommentController,
   GetCommentsController,
   GetCommentsByIDController,
-  DeleteCommentsController} from "./Comments.Controller"
+  DeleteCommentsController, UpdateCommentController} from "./Comments.Controller"
 
 export {
   CreateCarController,
@@ -36,7 +36,9 @@ export {
   CreateCommentController,
   GetCommentsController,
   GetCommentsByIDController,
-  DeleteCommentsController
+  DeleteCommentsController,
+  UpdateCommentController
+
   
 
 };

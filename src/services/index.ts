@@ -16,6 +16,7 @@ import {GetCommentsByIDService} from "./comments/GetCommentByID.service"
 import {CreateCommentService} from "./comments/CreateComments.service"
 import {GetCommentsService} from "./comments/GetComments.service"
 import {DeleteCommentsService} from './comments/DeleteComments.service'
+import {UpdateCommentService} from  "./comments/UpdateComments.service"
 
 export {
   CreateCarService,
@@ -35,5 +36,6 @@ export {
   GetCommentsByIDService,
   CreateCommentService,
   GetCommentsService,
-  DeleteCommentsService
+  DeleteCommentsService,
+  UpdateCommentService
 };
