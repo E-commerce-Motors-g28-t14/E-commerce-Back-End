@@ -11,6 +11,7 @@ export const getUserProfileService = async (
     relations: {
       cars: { photos: true },
       address: true,
+      comments: true,
     },
   });
 
