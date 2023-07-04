@@ -13,7 +13,7 @@ export const GetCommentsByIDService = async (id: string) => {
   const comments = car.comments.map((element) => {
     const { user, ...payload } = element;
 
-    return { ...payload, username: user.name };
+    return { ...payload, user: { id: user.id, name: user.name, color: user.color} };
   });
 
   return comments;
