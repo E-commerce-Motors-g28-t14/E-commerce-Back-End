@@ -47,7 +47,7 @@ export const UpdateCommentController = async (
   res: Response
 ): Promise<Response> => {
   const id: string = req.params.id;
-  const { comment } = req.body;
+  const {comment}  = req.body;
 
   try {
     const commentUpdated = await UpdateCommentService(id, comment);
