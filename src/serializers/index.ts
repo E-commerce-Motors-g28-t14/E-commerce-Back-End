@@ -8,8 +8,9 @@ import {
   carRequestWithoutPhotosSerializer,
   carsInfoResponseSerializer,
   carUpdateSerializer,
-  carResponseSerializerUser
+  carResponseSerializerUser,
 } from "./cars.serializers";
+import { CommentsCarReturnSchema } from "./comments.serializers";
 import {
   allPhotosResponseSerializer,
   allPhotosRequestSerializer,
@@ -22,7 +23,7 @@ import {
   userAttSchema,
   userCreateReturnSchema,
   userCreateSchema,
-  userInfoSchema
+  userInfoSchema,
 } from "./users.serializers";
 
 export {
@@ -43,5 +44,6 @@ export {
   createAddressSchema,
   userAttSchema,
   userInfoSchema,
-  carResponseSerializerUser
+  carResponseSerializerUser,
+  CommentsCarReturnSchema,
 };
