@@ -11,11 +11,10 @@ export const UpdateCommentService = async (id: string, comment: string): Promise
   if (!foundComment) {
     throw new Error('Comment not found.');
   }
-  ;
-  const newdate = new Date();
+
 
   foundComment.comment = comment || foundComment.comment;
-  foundComment.updatedAt = newdate || foundComment.updatedAt;
+ 
 
   await commentRepo.save(foundComment);
 

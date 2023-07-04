@@ -1,28 +1,13 @@
 import { Router } from "express";
 import {
-<<<<<<< HEAD
-    CreateCommentController,
-    GetCommentsController,
-    GetCommentsByIDController,
-    DeleteCommentsController,
-    UpdateCommentController
-} from "../controllers";
-import { validateTokenMiddleware } from '../middlewares/validateToken.middleware';
-import { isSellerMiddleware } from '../middlewares/isSeller.middleware';
-import { verifyCarExistsMiddleware } from "../middlewares";
- 
-
-
-=======
   CreateCommentController,
   GetCommentsController,
   GetCommentsByIDController,
   DeleteCommentsController,
+  UpdateCommentController,
 } from "../controllers";
-import { validateTokenMiddleware } from "../middlewares/validateToken.middleware";
-import { isSellerMiddleware } from "../middlewares/isSeller.middleware";
+import { validateTokenMiddleware } from "../middlewares/validateToken.middleware"; 
 import { verifyCarExistsMiddleware } from "../middlewares";
->>>>>>> d3a9893bb6947fbafb559abb1658a3928b257ffb
 
 const commentRouter: Router = Router();
 
