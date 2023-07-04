@@ -1,17 +1,15 @@
 import { Router } from "express";
 import {
-    CreateCommentController,
-    GetCommentsController,
-    GetCommentsByIDController,
-    DeleteCommentsController
+  CreateCommentController,
+  GetCommentsController,
+  GetCommentsByIDController,
+  DeleteCommentsController,
 } from "../controllers";
-import { validateTokenMiddleware } from '../middlewares/validateToken.middleware';
-import { isSellerMiddleware } from '../middlewares/isSeller.middleware';
-
-
+import { validateTokenMiddleware } from "../middlewares/validateToken.middleware";
+import { isSellerMiddleware } from "../middlewares/isSeller.middleware";
+import { verifyCarExistsMiddleware } from "../middlewares";
 
 const commentRouter: Router = Router();
-
 
 /**
  * @swagger
@@ -41,7 +39,7 @@ const commentRouter: Router = Router();
  *                 description: ID of the car related to the comment
  *           example:
  *             comment: "Novo comentário!"
- *             car: "ee204f96-b570-4126-822f-9312490e8c20"           
+ *             car: "ee204f96-b570-4126-822f-9312490e8c20"
  *     responses:
  *       201:
  *         description: Comment created successfully
@@ -266,10 +264,10 @@ commentRouter.post("", validateTokenMiddleware, CreateCommentController);
  *                   color: 2
  *                   createdAt: "2023-06-24T20:26:05.802Z"
  *                   updatedAt: "2023-06-24T20:26:05.802Z"
- *      
+ *
  */
 
-commentRouter.get("", GetCommentsController); 
+commentRouter.get("", GetCommentsController);
 
 /**
  * @swagger
@@ -410,7 +408,11 @@ commentRouter.get("", GetCommentsController);
  *                       format: date-time
  *                       description: Date and time of last user update
  */
-commentRouter.get("/:id", GetCommentsByIDController); 
+commentRouter.get(
+  "/cars/:id",
+  verifyCarExistsMiddleware,
+  GetCommentsByIDController
+);
 
 /**
  * @swagger
