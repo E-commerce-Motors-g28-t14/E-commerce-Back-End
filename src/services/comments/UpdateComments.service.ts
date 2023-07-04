@@ -12,13 +12,10 @@ export const UpdateCommentService = async (id: string, comment: string): Promise
     throw new Error('Comment not found.');
   }
   ;
-  const newdate = new Date();
-
-  foundComment.comment = comment || foundComment.comment;
-  foundComment.updatedAt = newdate || foundComment.updatedAt;
+ 
+  foundComment.comment = comment || foundComment.comment;  
 
   await commentRepo.save(foundComment);
-
 
   const commentUpdated = await commentRepo.findOne({
     where: { id: id },
@@ -26,7 +23,5 @@ export const UpdateCommentService = async (id: string, comment: string): Promise
   });
 
   return commentUpdated!;
-
-
 
 };
