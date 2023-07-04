@@ -271,7 +271,7 @@ commentRouter.get("", GetCommentsController);
 
 /**
  * @swagger
- * /comments/cars/:{id}:
+ * /comments/cars/{id}:
  *   get:
  *     summary: Get comment by ID
  *     tags: [Comments]
@@ -289,124 +289,35 @@ commentRouter.get("", GetCommentsController);
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                   format: uuid
- *                   description: ID of the comment
- *                 comment:
- *                   type: string
- *                   description: The comment itself
- *                 createdAt:
- *                   type: string
- *                   format: date-time
- *                   description: Date and time of comment creation
- *                 updatedAt:
- *                   type: string
- *                   format: date-time
- *                   description: Date and time of last comment update
- *                 car:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                       format: uuid
- *                       description: ID of the car
- *                     brand:
- *                       type: string
- *                       description: Brand of the car
- *                     model:
- *                       type: string
- *                       description: Model of the car
- *                     year:
- *                       type: integer
- *                       description: Year of the car
- *                     fuel:
- *                       type: integer
- *                       description: Fuel type of the car
- *                     km:
- *                       type: integer
- *                       description: Kilometers driven by the car
- *                     color:
- *                       type: string
- *                       description: Color of the car
- *                     isPromo:
- *                       type: boolean
- *                       description: Whether the car is on promotion
- *                     price:
- *                       type: string
- *                       description: Price of the car
- *                     description:
- *                       type: string
- *                       description: Description of the car
- *                     isActive:
- *                       type: boolean
- *                       description: Whether the car is active
- *                     createdAt:
- *                       type: string
- *                       format: date-time
- *                       description: Date and time of car creation
- *                     updatedAt:
- *                       type: string
- *                       format: date-time
- *                       description: Date and time of last car update
- *                     photos:
- *                       type: array
- *                       items:
- *                         type: object
- *                         properties:
- *                           id:
- *                             type: string
- *                             format: uuid
- *                             description: ID of the car photo
- *                           imageLink:
- *                             type: string
- *                             description: Link to the car photo
- *                           isCover:
- *                             type: boolean
- *                             description: Whether the photo is the cover photo of the car
- *                 user:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                       format: uuid
- *                       description: ID of the user creating the comment
- *                     name:
- *                       type: string
- *                       description: Name of the user
- *                     email:
- *                       type: string
- *                       format: email
- *                       description: Email of the user
- *                     cpf:
- *                       type: string
- *                       description: CPF of the user
- *                     birthdate:
- *                       type: string
- *                       format: date-time
- *                       description: Birthdate of the user
- *                     phone:
- *                       type: string
- *                       description: Phone number of the user
- *                     description:
- *                       type: string
- *                       description: Description of the user
- *                     isSeller:
- *                       type: boolean
- *                       description: Whether the user is a seller
- *                     color:
- *                       type: integer
- *                       description: Color code of the user
- *                     createdAt:
- *                       type: string
- *                       format: date-time
- *                       description: Date and time of user creation
- *                     updatedAt:
- *                       type: string
- *                       format: date-time
- *                       description: Date and time of last user update
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                     format: uuid
+ *                     description: ID of the comment
+ *                   comment:
+ *                     type: string
+ *                     description: The comment itself
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
+ *                     description: Date and time of comment creation
+ *                   updatedAt:
+ *                     type: string
+ *                     format: date-time
+ *                     description: Date and time of last comment update
+ *                   user:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                         format: uuid
+ *                         description: ID of the user creating the comment
+ *                       name:
+ *                         type: string
+ *                         description: Name of the user
  */
 
 commentRouter.get(  "/cars/:id", verifyCarExistsMiddleware, GetCommentsByIDController);
