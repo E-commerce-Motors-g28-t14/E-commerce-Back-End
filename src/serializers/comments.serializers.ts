@@ -12,4 +12,15 @@ const createCommentReturnSchema = createCommentSchema.extend({
   id: z.string(),
 });
 
-export { createCommentReturnSchema, createCommentSchema };
+const CommentsCarReturnSchema = z.object({
+  id: z.string(),
+  comment: z.string().max(250),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  username: z.string(),
+});
+export {
+  createCommentReturnSchema,
+  createCommentSchema,
+  CommentsCarReturnSchema,
+};
