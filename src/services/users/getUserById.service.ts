@@ -8,7 +8,7 @@ export const getUserByIdService = async (id: string): Promise<User | null> => {
 
   const user: User | undefined = await userRepo.findOne({
     where: { id: id },
-    relations: { cars: { photos: true } },
+    relations: { cars: { photos: true }, address: true },
   });
 
   return user || null;
